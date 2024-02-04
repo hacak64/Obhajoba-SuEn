@@ -1,2 +1,0 @@
-# Obhajoba-SuEn
-Obhajoba
