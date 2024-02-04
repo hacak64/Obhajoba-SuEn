@@ -1,94 +1,43 @@
-:root {
-  --main-font-family: Inter, 'Source Sans Pro';
-  --secondary-font-family: League Spartan, 'Source Sans Pro';
-  --border-common: solid 0.3rem #000000;
-  --border-radius-common: 1.5rem;
-  --background-linear-gradient: linear-gradient(296.56deg, #ffffe6 99.89%, rgba(255, 255, 230, 0) 318.45%);
-}
-
-.hotovka-aRK {
-  height: 111.4rem;
-  position: relative;
-  width: 100%;
-}
-
-.mask-group-DDP {
-  align-items: flex-start;
-  background: var(--background-linear-gradient);
-  border: solid 0.1rem #000000;
-  box-sizing: border-box;
+body {
+  margin: 0;
+  height: 100vh;
+  background: #ffffe6; /* Your background color */
   display: flex;
-  height: 101.5rem;
-  left: 0;
-  max-height: 100%;
-  max-width: 100%;
-  min-height: 100%;
-  min-width: 100%;
-  padding: 0.6rem 0.5rem 0.6rem 1.9rem;
-  position: absolute;
-  top: 0;
-  width: 141.3rem;
-}
-
-.text-item, .login-iM3 .honza-lejsk-TpR, .penize-HYZ .item-365-Qt5 {
-  color: #000000;
-  cursor: pointer;
-  flex-shrink: 0;
-  font-family: var(--secondary-font-family);
-  font-size: 2.4rem;
-  font-weight: 600;
-  line-height: 0.92;
-  margin: 1.1rem 4.6rem 0rem 0rem;
-  white-space: nowrap;
-}
-
-.auto-group {
-  flex-shrink: 0;
-  position: relative;
-}
-
-.graphic-item {
-  height: 28.2251rem;
-  object-fit: contain;
-  position: absolute;
-  vertical-align: top;
-  width: 36rem;
-}
-
-.rectangle-item {
-  border: var(--border-common);
-  border-radius: var(--border-radius-common);
-  box-sizing: border-box;
-  flex-shrink: 0;
-  height: 4.6668rem;
-  width: 100%;
-}
-
-.group-common {
+  justify-content: center;
   align-items: center;
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  row-gap: 0.1905rem;
 }
 
-/* Specific adjustments for unique elements */
-.auto-group-mn9b-TG9 .mapa-GUV, .skupina-hexagon-gUD {
-  left: 2.3rem;
+.map-container {
+  position: absolute;
   top: 0;
-  width: 58.5rem;
+  left: 0;
 }
 
-/* Adjust the logo size and margins */
-.logo-e1j {
-  flex-shrink: 0;
-  height: 7rem;
-  margin-left: 4.6rem;
-  object-fit: contain;
-  vertical-align: top;
-  width: 8.1rem;
+.hexagon {
+  width: 200px; /* Example size */
+  height: 115px; /* Example size */
+  margin: 29px 0;
+  background-image: url('hexagon.svg');
+  background-size: cover;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 2em;
 }
 
-/* Other specific styles for elements like .auto-group-npvf-1xR can follow a similar pattern */
+/* Position your hexagons with classes or ids */
+#zemepisne-pexeso {
+  background-image: url('Zemepisne pexeso hexagon.svg');
+  position: relative; /* Example position */
+}
 
-/* This is a simplified example and may need further adjustments based on the full context of the HTML structure. */
+#milionar {
+  background-image: url('Milionář hexagon.svg');
+  position: relative; /* Example position */
+}
+
+#az-kviz {
+  background-image: url('Az kviz hexagon.svg');
+  position: relative; /* Example position */
+}
