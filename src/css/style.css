@@ -1,12 +1,21 @@
+body{
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+/*
 body {
   margin: 0;
   height: 100vh;
-  background: #ffffe6; /* Your background color */
+  background: #ffffe6, 98.7%; /* Your background color 
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
+*/
 .map-container {
   position: absolute;
   top: 0;
@@ -17,7 +26,6 @@ body {
   width: 200px; /* Example size */
   height: 115px; /* Example size */
   margin: 29px 0;
-  background-image: url('hexagon.svg');
   background-size: cover;
   display: inline-flex;
   justify-content: center;
@@ -28,16 +36,13 @@ body {
 
 /* Position your hexagons with classes or ids */
 #zemepisne-pexeso {
-  background-image: url('Zemepisne pexeso hexagon.svg');
   position: relative; /* Example position */
 }
 
 #milionar {
-  background-image: url('Milionář hexagon.svg');
   position: relative; /* Example position */
 }
 
 #az-kviz {
-  background-image: url('Az kviz hexagon.svg');
   position: relative; /* Example position */
 }
