@@ -1,23 +1,8 @@
 body {
+  background: url("../../obrazce/pozadi.svg") no-repeat center center fixed;
   background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-image: url("../../obrazce/pozadi.svg");
-}
-
-
-.content {
-  /* Přizpůsobte si podle potřeby */
-  display: flex;
-  flex-direction: column;
-  /* Nebo row, podle toho, jak chcete obsah uspořádat */
-  align-items: center;
-  /* Zarovnává dětské prvky na střed horizontálně */
-  justify-content: center;
-  /* Zarovnává dětské prvky na střed vertikálně */
-  text-align: center;
-  /* Zarovnává text uvnitř dětských prvků na střed */
+  margin: 0;
+  padding: 0;
 }
 
 .map-container {
@@ -25,12 +10,13 @@ body {
   top: 0;
   left: 0;
 }
+#Profile {
+  z-index: 100;
+}
 
 .hexagon {
-  width: 200px;
-  /* Example size */
-  height: 115px;
-  /* Example size */
+  width: 200px; /* Adjust size as needed */
+  height: 115px; /* Adjust size as needed */
   margin: 29px 0;
   background-size: cover;
   display: inline-flex;
@@ -39,35 +25,60 @@ body {
   color: white;
   font-size: 2em;
 }
+.content {
+  position: relative;
+  padding: 5%;
+  display: flex;
+  flex-direction: column; /* Ustavíme směr flexboxu na sloupcový */
+  align-items: flex-start; /* Zarovnáme obsah na levý okraj */
+  gap: 5%; /* Procentuální mezera mezi obrázky */
+}
+
+img[alt="Zemepisne-pexeso"],
+img[alt="milionar"],
+img[alt="az-kviz"] {
+  cursor: pointer;
+  transition: transform 0.3s;
+  max-width: 100%; /* Maximální šířka obrázků, aby si zachovaly původní velikost */
+  width: 100%; /* Šířka obrázků na 100% kontejneru */
+  height: auto; /* Automatická výška pro zachování poměru stran */
+}
 
 img[alt="Zemepisne-pexeso"] {
-/* Výška obrázku */
-  cursor: pointer; /* Změna kurzoru na ruku po najetí myší */
-  transition: transform 0.3s; /* Plynulá změna vlastnosti "transform" po najetí myší */
+  top: 0;
+  left: 0;
 }
 
-/* Styl obrázku při najetí myší (hover) */
-img[alt="Zemepisne-pexeso"]:hover {
-  transform: scale(1.1); /* Zvětší obrázek o 10 % po najetí myší */
+img[alt="milionar"] {
+  top: 10%; /* Procentuální pozice odstupu od horního okraje */
+  left: 0;
 }
 
-#milionar {
-  position: relative;
-  /* Example position */
+img[alt="az-kviz"] {
+  top: 20%; /* Procentuální pozice odstupu od horního okraje */
+  left: 0;
 }
 
-#az-kviz {
-  position: relative;
-  /* Example position */
+img[alt="Zemepisne-pexeso"]:hover,
+img[alt="milionar"]:hover,
+img[alt="az-kviz"]:hover {
+  transform: scale(1.1);
 }
 
-#Profile {
+@media (max-width: 768px) {
+  .content {
+    padding: 2%; /* Snížíme mezery pro menší obrazovky */
+    gap: 2%; /* Snížíme mezery pro menší obrazovky */
+  }
 
-  position: fixed;
-  /* Umožní fixní pozici na stránce, aby se zůstal v pravém horním rohu při posouvání stránky. */
-  top: 0px;
-  /* Umístění od horního okraje stránky (0px). */
-  right: 0px;
-  /* Umístění od pravého okraje stránky (0px). */
+  img[alt="Zemepisne-pexeso"],
+  img[alt="az-kviz"] {
+    top: 5%; /* Upravíme pozice pro menší obrazovky */
+  }
 
+  img[alt="az-kviz"] {
+    top: 10%; /* Upravíme pozici pro menší obrazovky */
+  }
 }
+
+
