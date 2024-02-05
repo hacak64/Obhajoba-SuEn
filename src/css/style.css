@@ -14,71 +14,87 @@ body {
   z-index: 100;
 }
 
-.hexagon {
-  width: 200px; /* Adjust size as needed */
-  height: 115px; /* Adjust size as needed */
-  margin: 29px 0;
-  background-size: cover;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 2em;
-}
 .content {
   position: relative;
   padding: 5%;
   display: flex;
   flex-direction: column; /* Ustavíme směr flexboxu na sloupcový */
   align-items: flex-start; /* Zarovnáme obsah na levý okraj */
-  gap: 5%; /* Procentuální mezera mezi obrázky */
+  gap: 10%; /* Procentuální mezera mezi obrázky */
 }
-
+/*
 img[alt="Zemepisne-pexeso"],
 img[alt="milionar"],
 img[alt="az-kviz"] {
   cursor: pointer;
   transition: transform 0.3s;
-  max-width: 100%; /* Maximální šířka obrázků, aby si zachovaly původní velikost */
-  width: 100%; /* Šířka obrázků na 100% kontejneru */
-  height: auto; /* Automatická výška pro zachování poměru stran */
+  max-width: 100%;  Maximální šířka obrázků, aby si zachovaly původní velikost */
+/*  width: 70%;  Šířka obrázků na 100% kontejneru 
+  height: auto;  Automatická výška pro zachování poměru stran 
 }
+*/
 
-img[alt="Zemepisne-pexeso"] {
+#Zemepisne-pexeso {
+  width: 80%;
+  height: auto;
   top: 0;
-  left: 0;
+  left: 1000px;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  transition: transform 0.3s;
 }
 
-img[alt="milionar"] {
+#Milionar {
+  width: 80%;
+  height: auto;
   top: 10%; /* Procentuální pozice odstupu od horního okraje */
   left: 0;
+  transition: transform 0.3s;
 }
 
-img[alt="az-kviz"] {
+#Az-kviz {
+  width: 80%;
+  height: auto;
   top: 20%; /* Procentuální pozice odstupu od horního okraje */
   left: 0;
+  transition: transform 0.3s;
 }
 
-img[alt="Zemepisne-pexeso"]:hover,
-img[alt="milionar"]:hover,
-img[alt="az-kviz"]:hover {
+#Zemepisne-pexeso:hover, #Milionar:hover, #Az-kviz:hover {
   transform: scale(1.1);
 }
-
+/*
 @media (max-width: 768px) {
   .content {
-    padding: 2%; /* Snížíme mezery pro menší obrazovky */
-    gap: 2%; /* Snížíme mezery pro menší obrazovky */
+    padding: 2%;  Snížíme mezery pro menší obrazovky 
+    gap: 2%;  Snížíme mezery pro menší obrazovky 
   }
 
   img[alt="Zemepisne-pexeso"],
   img[alt="az-kviz"] {
-    top: 5%; /* Upravíme pozice pro menší obrazovky */
+    top: 5%;  Upravíme pozice pro menší obrazovky 
   }
 
   img[alt="az-kviz"] {
-    top: 10%; /* Upravíme pozici pro menší obrazovky */
+    top: 10%;  Upravíme pozici pro menší obrazovky 
   }
+}
+*/
+
+.profile-container{
+  border-radius: 30px;
+  border: none;
+  top: 20px;
+  position: absolute;
+  right: 20px;
+  text-align: start;
 }
 
 
+.hexagon-group{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+}
