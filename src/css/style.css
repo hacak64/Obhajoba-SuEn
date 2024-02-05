@@ -1,4 +1,4 @@
-body{
+body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -7,16 +7,19 @@ body{
 }
 
 
-/*
-body {
-  margin: 0;
-  height: 100vh;
-  background: #ffffe6, 98.7%; /* Your background color 
+.content {
+  /* Přizpůsobte si podle potřeby */
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  /* Nebo row, podle toho, jak chcete obsah uspořádat */
   align-items: center;
+  /* Zarovnává dětské prvky na střed horizontálně */
+  justify-content: center;
+  /* Zarovnává dětské prvky na střed vertikálně */
+  text-align: center;
+  /* Zarovnává text uvnitř dětských prvků na střed */
 }
-*/
+
 .map-container {
   position: absolute;
   top: 0;
@@ -24,8 +27,10 @@ body {
 }
 
 .hexagon {
-  width: 200px; /* Example size */
-  height: 115px; /* Example size */
+  width: 200px;
+  /* Example size */
+  height: 115px;
+  /* Example size */
   margin: 29px 0;
   background-size: cover;
   display: inline-flex;
@@ -35,15 +40,34 @@ body {
   font-size: 2em;
 }
 
-/* Position your hexagons with classes or ids */
-#zemepisne-pexeso {
-  position: relative; /* Example position */
+img[alt="Zemepisne-pexeso"] {
+/* Výška obrázku */
+  cursor: pointer; /* Změna kurzoru na ruku po najetí myší */
+  transition: transform 0.3s; /* Plynulá změna vlastnosti "transform" po najetí myší */
+}
+
+/* Styl obrázku při najetí myší (hover) */
+img[alt="Zemepisne-pexeso"]:hover {
+  transform: scale(1.1); /* Zvětší obrázek o 10 % po najetí myší */
 }
 
 #milionar {
-  position: relative; /* Example position */
+  position: relative;
+  /* Example position */
 }
 
 #az-kviz {
-  position: relative; /* Example position */
+  position: relative;
+  /* Example position */
+}
+
+#Profile {
+
+  position: fixed;
+  /* Umožní fixní pozici na stránce, aby se zůstal v pravém horním rohu při posouvání stránky. */
+  top: 0px;
+  /* Umístění od horního okraje stránky (0px). */
+  right: 0px;
+  /* Umístění od pravého okraje stránky (0px). */
+
 }
