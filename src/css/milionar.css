@@ -1,24 +1,86 @@
 body {
   background: url("../../obrazce/milionar/pozadi.svg") no-repeat center center fixed;
   background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* Upraveno pro umístění obsahu blíže k vrchu */
+  align-items: center;
+  height: 100vh;
   margin: 0;
-  padding: 0;
   font-family: 'Russo One';
   font-size: 22px;
 }
 
-.tlacitka-menu {
-  position: relative;
-  padding: 5%;
+h1 {
+  color: #BCBCBC;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+p {
+  font-size: 19px;
+  color: #BCBCBC;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+.plogo {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  /* Umožňuje logo zvětšovat, ale ne větší než je obrazovka */
+  min-width: 200px;
+  /* Minimální šířka loga */
+  min-height: 200px;
+  /* Minimální výška loga, přizpůsobte dle vašeho loga */
+  width: auto;
+  /* Udrží poměry stran při změnách velikosti */
+  height: auto;
+  /* Udrží poměry stran při změnách velikosti */
+  margin-top: -20px;
+  /* Upravte podle potřeby */
 }
 
 .logo {
-  align-items: center;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  /* Umožňuje logo zvětšovat, ale ne větší než je obrazovka */
+  min-width: 200px;
+  /* Minimální šířka loga */
+  min-height: 100px;
+  /* Minimální výška loga, přizpůsobte dle vašeho loga */
+  width: auto;
+  /* Udrží poměry stran při změnách velikosti */
+  height: auto;
+  /* Udrží poměry stran při změnách velikosti */
+  margin-top: -20px;
+  /* Upravte podle potřeby */
+}
+
+.tlacitka-menu {
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    min-width: 150px;
+    /* Upravená minimální šířka pro menší obrazovky */
+    min-height: 75px;
+    /* Upravená minimální výška pro menší obrazovky */
+    margin-top: 10px;
+    /* Upravený horní okraj pro menší obrazovky */
+  }
+
+  body {
+    padding-top: 10px;
+    /* Upravený prostor na vrchu pro menší obrazovky */
+  }
 }
 
 .pravidla {
@@ -35,8 +97,15 @@ body {
   transition: transform 0.3s;
 }
 
+.zpet {
+  height: auto;
+  top: 10%;
+  left: 0;
+  transition: transform 0.3s;
+}
+
 .pravidla:hover,
-.hrat:hover
-{
+.hrat:hover,
+.zpet:hover {
   transform: scale(1.1);
 }
