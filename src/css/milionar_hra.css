@@ -6,18 +6,120 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
-  padding:0;
+  padding: 0;
   font-family: 'Russo One';
   font-size: 22px;
   box-sizing: border-box;
 }
+
+p {
+  color: white;
+}
+.logo{
+  position: static;
+  height: auto;
+  width: 15%;
+  top: 2%;
+}
+.splneno {
+  position: absolute;
+  height: auto;
+  width: 15%;
+  top: 2%;
+  left: 1%;
+
+}
+
 .zpet {
   position: absolute;
   height: auto;
-  bottom: 10%;
-  right: 5%;
+  top: 5%;
+  right: 2%;
   transition: transform 0.3s;
 }
+
 .zpet:hover {
   transform: scale(1.1);
+}
+
+.otazka {
+  position: relative;
+  /* Nastaví div.otazka jako referenční bod pro pozicování uvnitř */
+  display: inline-block;
+  /* Toto zajistí, že div bude jen tak velký, jak je třeba */
+}
+
+.otazka_tvar {
+  width: 100%;
+  /* Případně nastavte pevnou šířku pro obrázek */
+  height: auto;
+  /* Zachová poměr stran obrázku */
+}
+
+.text_otazky {
+  position: absolute;
+  /* Absolutní pozicování vůči svému nejbližšímu relativně pozicovanému předku */
+  top: 36%;
+  /* Nastaví text na střed obrázku, podle výšky */
+  left: 25%;
+  /* Nastaví text na střed obrázku, podle šířky */
+  transform: translate(-50%, -50%);
+  /* Posune text zpět o polovinu jeho výšky a šířky, aby byl přesně na středu */
+  color: white;
+  /* Nastaví barvu textu */
+  /* Další styly pro text podle potřeby */
+}
+
+/* Kontejner pro odpovědi */
+/* Kontejner pro odpovědi */
+.odpovedi {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  /* Zajistí rovnoměrné rozložení s mezerami */
+}
+
+/* Jednotlivé odpovědi - Nastavte pevnou šířku nebo procenta podle potřeby */
+.odpovedA,
+.odpovedB,
+.odpovedC,
+.odpovedD {
+  position: relative;
+  width: calc(50% - 20px);
+  /* Například pro dvě odpovědi vedle sebe s 10px marginem */
+  margin: 10px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  /* Přizpůsobí šířku obsahu */
+}
+
+/* Obrázky v odpovědích */
+.odpovedA_tvar,
+.odpovedB_tvar,
+.odpovedC_tvar,
+.odpovedD_tvar {
+  width: 100%;
+  /* Obrázky se přizpůsobí kontejneru */
+  height: auto;
+}
+
+/* Texty odpovědí */
+.text_odpovediA,
+.text_odpovediB,
+.text_odpovediC,
+.text_odpovediD {
+  position: absolute;
+  top: 32%;
+  left: 35%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  width: 100%;
+}
+
+
+
+.pomoc {
+  display: flex;
 }
