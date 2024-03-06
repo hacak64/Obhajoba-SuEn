@@ -21,14 +21,31 @@ p {
   width: 15%;
   top: 2%;
 }
-.splneno {
+.splneno{
   position: absolute;
-  height: auto;
-  width: 15%;
+  /* Nastaví div.otazka jako referenční bod pro pozicování uvnitř */
+  display: inline-block;
+  /* Toto zajistí, že div bude jen tak velký, jak je třeba */
   top: 2%;
   left: 1%;
-
 }
+.splneno_tvar{
+  width: 100%;
+  /* Případně nastavte pevnou šířku pro obrázek */
+  height: auto;
+  /* Zachová poměr stran obrázku */
+}
+.splneno_texty{
+  position: relative;
+  /* Absolutní pozicování vůči svému nejbližšímu relativně pozicovanému předku */
+  /* Nastaví text na střed obrázku, podle šířky */
+  transform: translate(-50%, -50%);
+  /* Posune text zpět o polovinu jeho výšky a šířky, aby byl přesně na středu */
+  color: white;
+  /* Nastaví barvu textu */
+  /* Další styly pro text podle potřeby */
+}
+
 
 .zpet {
   position: absolute;
