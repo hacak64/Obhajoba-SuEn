@@ -1,0 +1,462 @@
+{
+    "urovne": [
+        {
+            "uroven": 1,
+            "otazky": [
+                {
+                    "otazka": "Jaká je hlavní město Francie?",
+                    "moznosti": [
+                        "Paříž",
+                        "Londýn",
+                        "Berlín",
+                        "Madrid"
+                    ],
+                    "spravna_odpoved": "Paříž"
+                },
+                {
+                    "otazka": "3 * 3 - 3 + 3 / 3 = ?",
+                    "moznosti": [
+                        "3",
+                        "12",
+                        "999",
+                        "7"
+                    ],
+                    "spravna_odpoved": "7"
+                },
+                {
+                    "otazka": "Kolik má Purkyňka pater",
+                    "moznosti": [
+                        "Země",
+                        "Mars",
+                        "Venuše",
+                        "Jupiter"
+                    ],
+                    "spravna_odpoved": "4"
+                }
+            ]
+        },
+        {
+            "uroven": 2,
+            "otazky": [
+                {
+                    "otazka": "Co je H2O?",
+                    "moznosti": [
+                        "Voda",
+                        "Kyslík",
+                        "Helium",
+                        "Kyselina Sírová"
+                    ],
+                    "spravna_odpoved": "Voda"
+                },
+                {
+                    "otazka": "Kdo napsal 'Romea a Julii'?",
+                    "moznosti": [
+                        "Leo Tolstoy",
+                        "William Shakespeare",
+                        "Charles Dickens",
+                        "Victor Hugo"
+                    ],
+                    "spravna_odpoved": "William Shakespeare"
+                },
+                {
+                    "otazka": "Co je obor na Purkyňce pod označením V?",
+                    "moznosti": [
+                        "Vodní inženýři",
+                        "Programátoři",
+                        "Kybernetici",
+                        "Ekologové"
+                    ],
+                    "spravna_odpoved": "Programátoři"
+                }
+            ]
+        },
+        {
+            "urovne": [
+                {
+                    "uroven": 3,
+                    "otazky": [
+                        {
+                            "otazka": "Jaký je chemický symbol pro stříbro?",
+                            "moznosti": [
+                                "Au",
+                                "Ag",
+                                "Si",
+                                "Sr"
+                            ],
+                            "spravna_odpoved": "Ag"
+                        },
+                        {
+                            "otazka": "Jaká z těchto učeben není počítačová?",
+                            "moznosti": [
+                                "52",
+                                "56",
+                                "46",
+                                "43"
+                            ],
+                            "spravna_odpoved": "46"
+                        },
+                        {
+                            "otazka": "Která řeka protéká Paříží?",
+                            "moznosti": [
+                                "Rýn",
+                                "Seina",
+                                "Loira",
+                                "Thames"
+                            ],
+                            "spravna_odpoved": "Seina"
+                        }
+                    ]
+                },
+                {
+                    "uroven": 4,
+                    "otazky": [
+                        {
+                            "otazka": "Kdo je autorem teorie evoluce?",
+                            "moznosti": [
+                                "Isaac Newton",
+                                "Charles Darwin",
+                                "Albert Einstein",
+                                "Nikola Tesla"
+                            ],
+                            "spravna_odpoved": "Charles Darwin"
+                        },
+                        {
+                            "otazka": "Který element má nejvyšší bod varu?",
+                            "moznosti": [
+                                "Vodík",
+                                "Oxid uhelnatý",
+                                "Železo",
+                                "Wolfram"
+                            ],
+                            "spravna_odpoved": "Wolfram"
+                        },
+                        {
+                            "otazka": "Jaké škole patří příjezdová cesta vedle Purkyňky?",
+                            "moznosti": [
+                                "Základní škola Kneslova",
+                                "Univerzita Karlova",
+                                "MUNI",
+                                "VUT"
+                            ],
+                            "spravna_odpoved": "VUT"
+                        }
+                    ]
+                },
+                {
+                    "uroven": 5,
+                    "otazky": [
+                        {
+                            "otazka": "Kdo získal Nobelovu cenu za fyziku v roce 1921?",
+                            "moznosti": [
+                                "Niels Bohr",
+                                "Albert Einstein",
+                                "Marie Curie",
+                                "Enrico Fermi"
+                            ],
+                            "spravna_odpoved": "Albert Einstein"
+                        },
+                        {
+                            "otazka": "Jaký je nejhlubší oceán na Zemi?",
+                            "moznosti": [
+                                "Atlantský oceán",
+                                "Indický oceán",
+                                "Severní ledový oceán",
+                                "Tichý oceán"
+                            ],
+                            "spravna_odpoved": "Tichý oceán"
+                        },
+                        {
+                            "otazka": "Který jazyk je úředním jazykem v Singapuru?",
+                            "moznosti": [
+                                "Angličtina",
+                                "Malajština",
+                                "Čínština",
+                                "Všechny výše uvedené"
+                            ],
+                            "spravna_odpoved": "Všechny výše uvedené"
+                        }
+                    ]
+                },
+                {
+                    "uroven": 6,
+                    "otazky": [
+                        {
+                            "otazka": "Které město je hlavním městem Kanady?",
+                            "moznosti": [
+                                "Toronto",
+                                "Montreal",
+                                "Ottawa",
+                                "Vancouver"
+                            ],
+                            "spravna_odpoved": "Ottawa"
+                        },
+                        {
+                            "otazka": "Který z těchto jazyků patří do balto-slovanské jazykové rodiny?",
+                            "moznosti": [
+                                "Ruština",
+                                "Polština",
+                                "Litevština",
+                                "Srbština"
+                            ],
+                            "spravna_odpoved": "Litevština"
+                        },
+                        {
+                            "otazka": "Co je průměrná vzdálenost Země od Slunce?",
+                            "moznosti": [
+                                "Přibližně 92 milionů mil",
+                                "Přibližně 93 milionů mil",
+                                "Přibližně 94 milionů mil",
+                                "Přibližně 95 milionů mil"
+                            ],
+                            "spravna_odpoved": "Přibližně 93 milionů mil"
+                        }
+                    ]
+                },
+                {
+                    "uroven": 7,
+                    "otazky": [
+                        {
+                            "otazka": "Který z těchto prvků je nejlehčí?",
+                            "moznosti": [
+                                "Vodík",
+                                "Hélium",
+                                "Lithium",
+                                "Beryllium"
+                            ],
+                            "spravna_odpoved": "Vodík"
+                        },
+                        {
+                            "otazka": "Který z těchto států NENÍ stálým členem Bezpečnostní rady OSN?",
+                            "moznosti": [
+                                "Čína",
+                                "Francie",
+                                "Německo",
+                                "Rusko"
+                            ],
+                            "spravna_odpoved": "Německo"
+                        },
+                        {
+                            "otazka": "Jaký je chemický vzorec pro ozon?",
+                            "moznosti": [
+                                "O2",
+                                "O3",
+                                "O4",
+                                "O5"
+                            ],
+                            "spravna_odpoved": "O3"
+                        }
+                    ]
+                },
+                {
+                    "uroven": 8,
+                    "otazky": [
+                        {
+                            "otazka": "Kdo je považován za otce počítačů?",
+                            "moznosti": [
+                                "Charles Babbage",
+                                "Alan Turing",
+                                "John von Neumann",
+                                "Ada Lovelace"
+                            ],
+                            "spravna_odpoved": "Charles Babbage"
+                        },
+                        {
+                            "otazka": "Jaký proces přeměňuje sluneční energii na chemickou energii?",
+                            "moznosti": [
+                                "Fotosyntéza",
+                                "Chemosyntéza",
+                                "Respirace",
+                                "Fermentace"
+                            ],
+                            "spravna_odpoved": "Fotosyntéza"
+                        },
+                        {
+                            "otazka": "Která z těchto zemí má největší rozlohu?",
+                            "moznosti": [
+                                "Rusko",
+                                "Kanada",
+                                "Čína",
+                                "Spojené státy"
+                            ],
+                            "spravna_odpoved": "Rusko"
+                        }
+                    ]
+                },
+                {
+                    "uroven": 9,
+                    "otazky": [
+                        {
+                            "otazka": "Kdo napsal knihu 'O myších a lidech'?",
+                            "moznosti": [
+                                "John Steinbeck",
+                                "Ernest Hemingway",
+                                "F. Scott Fitzgerald",
+                                "William Faulkner"
+                            ],
+                            "spravna_odpoved": "John Steinbeck"
+                        },
+                        {
+                            "otazka": "Která říše vznikla jako první?",
+                            "moznosti": [
+                                "Římská říše",
+                                "Perská říše",
+                                "Egyptská říše",
+                                "Akkadská říše"
+                            ],
+                            "spravna_odpoved": "Akkadská říše"
+                        },
+                        {
+                            "otazka": "Který z těchto prvků je radioaktivní?",
+                            "moznosti": [
+                                "Uran",
+                                "Olovo",
+                                "Zlato",
+                                "Železo"
+                            ],
+                            "spravna_odpoved": "Uran"
+                        }
+                    ]
+                },
+                {
+                    "uroven": 10,
+                    "otazky": [
+                        {
+                            "otazka": "Co znamená DNA?",
+                            "moznosti": [
+                                "Deoxyribonukleová kyselina",
+                                "Dinukleová kyselina",
+                                "Deoxyribóza Nukleová Aktivita",
+                                "Dinukleární Aktivátor"
+                            ],
+                            "spravna_odpoved": "Deoxyribonukleová kyselina"
+                        },
+                        {
+                            "otazka": "Jaká je nejvyšší hora světa?",
+                            "moznosti": [
+                                "Mount Everest",
+                                "K2",
+                                "Kangčendzönga",
+                                "Lhoce"
+                            ],
+                            "spravna_odpoved": "Mount Everest"
+                        },
+                        {
+                            "otazka": "Kdo objevil Ameriku?",
+                            "moznosti": [
+                                "Leif Erikson",
+                                "Christopher Columbus",
+                                "Amerigo Vespucci",
+                                "Vasco da Gama"
+                            ],
+                            "spravna_odpoved": "Christopher Columbus"
+                        }
+                    ]
+                },
+                {
+                    "urovne": [
+                      {
+                        "uroven": 11,
+                        "otazky": [
+                          {
+                            "otazka": "Který matematik formuloval posloupnost čísel, kde každé další číslo je součtem dvou předchozích?",
+                            "moznosti": ["Isaac Newton", "Leonardo Fibonacci", "Albert Einstein", "Pythagoras"],
+                            "spravna_odpoved": "Leonardo Fibonacci"
+                          },
+                          {
+                            "otazka": "Jaký je chemický vzorec pro ozon?",
+                            "moznosti": ["O3", "O2", "CO2", "H2O"],
+                            "spravna_odpoved": "O3"
+                          },
+                          {
+                            "otazka": "Která z těchto říší neexistovala v období starověku?",
+                            "moznosti": ["Římská říše", "Perská říše", "Mongolská říše", "Egyptská říše"],
+                            "spravna_odpoved": "Mongolská říše"
+                          }
+                        ]
+                      },
+                      {
+                        "uroven": 12,
+                        "otazky": [
+                          {
+                            "otazka": "Kdo je považován za zakladatele psychoanalýzy?",
+                            "moznosti": ["Sigmund Freud", "Carl Jung", "Ivan Pavlov", "Jean Piaget"],
+                            "spravna_odpoved": "Sigmund Freud"
+                          },
+                          {
+                            "otazka": "Který jazyk je nejstarším známým písemným jazykem?",
+                            "moznosti": ["Hebrejština", "Sumerština", "Egyptština", "Čínština"],
+                            "spravna_odpoved": "Sumerština"
+                          },
+                          {
+                            "otazka": "Které město bylo původně známé jako Byzantium?",
+                            "moznosti": ["Atény", "Rím", "Konstantinopol", "Jeruzalém"],
+                            "spravna_odpoved": "Konstantinopol"
+                          }
+                        ]
+                      },
+                      {
+                        "uroven": 13,
+                        "otazky": [
+                          {
+                            "otazka": "Co studuje kriptografie?",
+                            "moznosti": ["Živé organismy", "Vesmír", "Šifrování a zabezpečení dat", "Starověké civilizace"],
+                            "spravna_odpoved": "Šifrování a zabezpečení dat"
+                          },
+                          {
+                            "otazka": "Kdo napsal 'Principia Mathematica'?",
+                            "moznosti": ["Isaac Newton", "Albert Einstein", "Galileo Galilei", "Nicolaus Copernicus"],
+                            "spravna_odpoved": "Isaac Newton"
+                          },
+                          {
+                            "otazka": "Jaký prvek má nejvyšší bod varu?",
+                            "moznosti": ["Vodík", "Olovo", "Karbon", "Wolfram"],
+                            "spravna_odpoved": "Wolfram"
+                          }
+                        ]
+                      },
+                      {
+                        "uroven": 14,
+                        "otazky": [
+                          {
+                            "otazka": "Který filozof prohlásil 'Myslím, tedy jsem'?",
+                            "moznosti": ["René Descartes", "Sokrates", "Platón", "Aristoteles"],
+                            "spravna_odpoved": "René Descartes"
+                          },
+                          {
+                            "otazka": "Který proces přeměňuje zelené listy na žluté nebo červené v podzimních měsících?",
+                            "moznosti": ["Fotosyntéza", "Chlorofyl degradace", "Osmóza", "Respirace"],
+                            "spravna_odpoved": "Chlorofyl degradace"
+                          },
+                          {
+                            "otazka": "Která teorie popisuje chování částic na atomové a subatomové úrovni?",
+                            "moznosti": ["Relativita", "Kvantová mechanika", "Klasická mechanika", "Termodynamika"],
+                            "spravna_odpoved": "Kvantová mechanika"
+                          }
+                        ]
+                      },
+                      {
+                        "uroven": 15,
+                        "otazky": [
+                          {
+                            "otazka": "Co je Gödelova věta o neúplnosti?",
+                            "moznosti": ["V každém dostatečně silném axiomatickém systému existují tvrzení, která nelze dokázat ani vyvrátit", "Energie se v izolovaném systému zachovává", "Celkový počet informací v uzavřeném systému je konstantní", "Pohyb tělesa ve vesmíru je předurčen gravitačními silami"],
+                            "spravna_odpoved": "V každém dostatečně silném axiomatickém systému existují tvrzení, která nelze dokázat ani vyvrátit"
+                          },
+                          {
+                            "otazka": "Která částice je zodpovědná za přenos sil mezi kvarky?",
+                            "moznosti": ["Gluon", "Foton", "Boson", "Elektron"],
+                            "spravna_odpoved": "Gluon"
+                          },
+                          {
+                            "otazka": "Kdo je autorem teorie 'Mnohosvětová interpretace kvantové mechaniky'?",
+                            "moznosti": ["Hugh Everett", "Niels Bohr", "Erwin Schrödinger", "Werner Heisenberg"],
+                            "spravna_odpoved": "Hugh Everett"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+            ]
+        }                  
+    ]
+}
