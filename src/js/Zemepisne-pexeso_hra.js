@@ -1,149 +1,62 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const gameBoard = document.getElementById('gameBoard');
-    const scoreDisplay = document.getElementById('score');
+    const gameBoard = document.getElementById('game-board');
+    const scoreBoard = document.querySelector('.score-board');
     let score = 0;
-    let flippedCards = [];
-    let lockBoard = false;
-    let matches = 0;
+    let cardsFlipped = [];
+    let isWaiting = false;
 
-    // Doplnění pole zemí pro 12 unikátních dvojic
-    const countries = [
-        {name: "Česká Republika", flag: "path/to/czech-flag.jpg"},
-        {name: "Slovensko", flag: "path/to/slovak-flag.jpg"},
-        // Zde doplňte dalších 10 zemí a jejich vlajky
-    ];
+    const states = ["Česko", "Slovensko", "Maďarsko", "Rakousko", "Německo", "Polsko", "Itálie", "Chorvatsko", "Francie", "Belgie", "Velká Británie", "Švýcarsko"];
+    const cardSet = [...states, ...states].sort(() => 0.5 - Math.random());
 
-    function shuffle(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array;
-    }
+    cardSet.forEach((state, index) => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.innerHTML = `
+            <div class="card-inner">
+                <div class="card-front"></div>
+                <div class="card-back">${index % 2 === 0 ? state : "Vlajka " + state}</div>
+            </div>`;
+        card.dataset.name = state;
 
-    function createCard(card) {
-        const cardElement = document.createElement('div');
-        cardElement.classList.add('card');
-
-        const cardImg = document.createElement('img');
-        cardImg.src = '../../../obrazce/pexeso/Karta.svg'; // Základní obrázek karty
-        cardImg.setAttribute('data-flag', card.flag);
-        cardElement.appendChild(cardImg);
-
-        cardElement.addEventListener('click', () => flipCard(cardElement, cardImg));
-
-        gameBoard.appendChild(cardElement);
-    }
-
-    function flipCard(cardElement, cardImg) {
-        if (lockBoard || cardElement.classList.contains('flipped')) return;
-        
-        cardImg.src = cardImg.getAttribute('data-flag');
-        cardElement.classList.add('flipped');
-        flippedCards.push(cardElement);
-
-        if (flippedCards.length === 2) {
-            checkForMatch();
-        }
-    }
-
-    function checkForMatch() {
-        const [firstCard, secondCard] = flippedCards;
-        const firstImg = firstCard.querySelector('img');
-        const secondImg = secondCard.querySelector('img');
-        if (firstImg.getAttribute('data-flag') === secondImg.getAttribute('data-flag')) {
-            score += 50;
-            matches++;
-            // Karty zůstávají otočené
-            disableCards(firstCard, secondCard);
-            if (matches === 12) {
-                // Všechny karty byly nalezeny
-                console.log("Hra dokončena!");
-                // Zde můžete přidat logiku pro konec hry
+        card.addEventListener('click', () => {
+            if (isWaiting || card.classList.contains('flipped')) return;
+            card.classList.add('flipped');
+            cardsFlipped.push(card);
+            if (cardsFlipped.length === 2) {
+                updateGame();
             }
+        });
+
+        gameBoard.appendChild(card);
+    });
+
+    function updateGame() {
+        const [firstCard, secondCard] = cardsFlipped;
+        if (firstCard.dataset.name === secondCard.dataset.name) {
+            score += 50;
+            firstCard.removeEventListener('click', flipCard);
+            secondCard.removeEventListener('click', flipCard);
+            firstCard.classList.add('hidden');
+            secondCard.classList.add('hidden');
         } else {
             score -= 10;
-            unflipCards(firstCard, secondCard);
+            isWaiting = true;
+            setTimeout(() => {
+                firstCard.classList.remove('flipped');
+                secondCard.classList.remove('flipped');
+                isWaiting = false;
+            }, 1000);
         }
+        cardsFlipped = [];
         updateScore();
     }
 
-    function disableCards(firstCard, secondCard) {
-        firstCard.removeEventListener('click', flipCard);
-        secondCard.removeEventListener('click', flipCard);
-        resetBoard();
-    }
-
-    function unflipCards(firstCard, secondCard) {
-        lockBoard = true;
-        setTimeout(() => {
-            firstCard.classList.remove('flipped');
-            secondCard.classList.remove('flipped');
-            firstCard.querySelector('img').src = '../../obrazce/pexeso/Karta.svg';
-            secondCard.querySelector('img').src = '../../obrazce/pexeso/Karta.svg';
-            resetBoard();
-        }, 1000);
+    function flipCard() {
+        if (isWaiting) return;
+        this.classList.add('flipped');
     }
 
     function updateScore() {
-        scoreDisplay.textContent = `Skóre: ${score}`;
+        scoreBoard.innerText = `Skóre: ${score}`;
     }
-
-    function resetBoard() {
-        [flippedCards, lockBoard] = [[], false];
-    }
-
-    // Zajištění, že se karty zamíchají při načtení stránky
-    (function shuffleBoard() {
-        cards = shuffle([...countries, ...countries]);
-        cards.forEach(card => createCard(card));
-    })();
-});
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    const gameBoard = document.getElementById('gameBoard');
-    const scoreDisplay = document.getElementById('score');
-    let score = 0;
-    let flippedCards = [];
-    let lockBoard = false;
-    let matches = 0; // Počet správných párů
-
-    // Předpokládejme rozšířené pole 'countries' na 12 unikátních prvků
-    const countries = [
-        // Doplnění 12 zemí s cestami k obrázkům vlajek
-    ];
-
-    function shuffle(array) {
-        // Zamíchání logiky zůstává stejná
-    }
-
-    // Vytvoření 24 karet (12 unikátních dvojic)
-    let cards = shuffle([...countries, ...countries]);
-
-    cards.forEach(card => {
-        const cardElement = document.createElement('div');
-        cardElement.classList.add('card');
-
-        // Přední strana karty - Vlajka
-        const frontFace = document.createElement('img');
-        frontFace.className = 'front-face';
-        frontFace.src = card.flag;
-
-        // Zadní strana karty - Karta.svg
-        const backFace = document.createElement('img');
-        backFace.className = 'back-face';
-        backFace.src = '../../obrazce/pexeso/Karta.svg';
-
-        cardElement.appendChild(frontFace);
-        cardElement.appendChild(backFace);
-
-        cardElement.addEventListener('click', () => {
-            // Implementace otočení a logiky hry
-        });
-
-        gameBoard.appendChild(cardElement);
-    });
-
-    // Další implementace...
 });
