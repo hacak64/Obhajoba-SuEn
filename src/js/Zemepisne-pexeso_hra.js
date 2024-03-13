@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cardElement.classList.add('card');
 
         const cardImg = document.createElement('img');
-        cardImg.src = '../../obrazce/pexeso/Karta.svg'; // Základní obrázek karty
+        cardImg.src = '../../../obrazce/pexeso/Karta.svg'; // Základní obrázek karty
         cardImg.setAttribute('data-flag', card.flag);
         cardElement.appendChild(cardImg);
 
