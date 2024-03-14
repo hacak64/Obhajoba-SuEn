@@ -146,14 +146,14 @@
                     "uroven": 5,
                     "otazky": [
                         {
-                            "otazka": "Kdo získal Nobelovu cenu za fyziku v roce 1921?",
+                            "otazka": "Jaké zvíře je typické pro druhé patro?",
                             "moznosti": [
-                                "Niels Bohr",
-                                "Albert Einstein",
-                                "Marie Curie",
-                                "Enrico Fermi"
+                                "Kočka Divoká",
+                                "Kočka Domácí",
+                                "Kachna Divoká",
+                                "Lenochod Hnědokrký"
                             ],
-                            "spravna_odpoved": "Albert Einstein"
+                            "spravna_odpoved": "Kachna Divoká"
                         },
                         {
                             "otazka": "Jaký je nejhlubší oceán na Zemi?",
@@ -191,14 +191,14 @@
                             "spravna_odpoved": "Ottawa"
                         },
                         {
-                            "otazka": "Který z těchto jazyků patří do balto-slovanské jazykové rodiny?",
+                            "otazka": "Kolik je na Purkyňce učeben?",
                             "moznosti": [
-                                "Ruština",
-                                "Polština",
-                                "Litevština",
-                                "Srbština"
+                                "58",
+                                "59",
+                                "60",
+                                "61"
                             ],
-                            "spravna_odpoved": "Litevština"
+                            "spravna_odpoved": "60"
                         },
                         {
                             "otazka": "Co je průměrná vzdálenost Země od Slunce?",
@@ -226,14 +226,14 @@
                             "spravna_odpoved": "Vodík"
                         },
                         {
-                            "otazka": "Který z těchto států NENÍ stálým členem Bezpečnostní rady OSN?",
+                            "otazka": "Kdo je ředitelem Purkyňky?",
                             "moznosti": [
-                                "Čína",
-                                "Francie",
-                                "Německo",
-                                "Rusko"
+                                "Aleš Raus",
+                                "Aleš Ruda",
+                                "Nikola Führlingerová",
+                                "Lenka Hrušková"
                             ],
-                            "spravna_odpoved": "Německo"
+                            "spravna_odpoved": "Aleš Ruda"
                         },
                         {
                             "otazka": "Jaký je chemický vzorec pro ozon?",
@@ -271,14 +271,14 @@
                             "spravna_odpoved": "Fotosyntéza"
                         },
                         {
-                            "otazka": "Která z těchto zemí má největší rozlohu?",
+                            "otazka": "Kolik je zhruba na Purkyňce žáků?",
                             "moznosti": [
-                                "Rusko",
-                                "Kanada",
-                                "Čína",
-                                "Spojené státy"
+                                "1300",
+                                "1200",
+                                "1500",
+                                "900"
                             ],
-                            "spravna_odpoved": "Rusko"
+                            "spravna_odpoved": "1300"
                         }
                     ]
                 },
@@ -286,14 +286,14 @@
                     "uroven": 9,
                     "otazky": [
                         {
-                            "otazka": "Kdo napsal knihu 'O myších a lidech'?",
+                            "otazka": "Jak se jmenuje výchovná poradkyně na Purkyňce?",
                             "moznosti": [
-                                "John Steinbeck",
-                                "Ernest Hemingway",
-                                "F. Scott Fitzgerald",
-                                "William Faulkner"
+                                "Lenka Hrušková",
+                                "Monika Vávrová",
+                                "Petr Rychlý",
+                                "Dana Šmerdová"
                             ],
-                            "spravna_odpoved": "John Steinbeck"
+                            "spravna_odpoved": "Dana Šmerdová"
                         },
                         {
                             "otazka": "Která říše vznikla jako první?",
@@ -321,14 +321,14 @@
                     "uroven": 10,
                     "otazky": [
                         {
-                            "otazka": "Co znamená DNA?",
+                            "otazka": "Jaké má Purkyňka licenční smlouvy?",
                             "moznosti": [
-                                "Deoxyribonukleová kyselina",
-                                "Dinukleová kyselina",
-                                "Deoxyribóza Nukleová Aktivita",
-                                "Dinukleární Aktivátor"
+                                "Nemá",
+                                "Microsoft",
+                                "Apple",
+                                "Picto"
                             ],
-                            "spravna_odpoved": "Deoxyribonukleová kyselina"
+                            "spravna_odpoved": "Nemá"
                         },
                         {
                             "otazka": "Jaká je nejvyšší hora světa?",
@@ -354,109 +354,184 @@
                 },
                 {
                     "urovne": [
-                      {
-                        "uroven": 11,
-                        "otazky": [
-                          {
-                            "otazka": "Který matematik formuloval posloupnost čísel, kde každé další číslo je součtem dvou předchozích?",
-                            "moznosti": ["Isaac Newton", "Leonardo Fibonacci", "Albert Einstein", "Pythagoras"],
-                            "spravna_odpoved": "Leonardo Fibonacci"
-                          },
-                          {
-                            "otazka": "Jaký je chemický vzorec pro ozon?",
-                            "moznosti": ["O3", "O2", "CO2", "H2O"],
-                            "spravna_odpoved": "O3"
-                          },
-                          {
-                            "otazka": "Která z těchto říší neexistovala v období starověku?",
-                            "moznosti": ["Římská říše", "Perská říše", "Mongolská říše", "Egyptská říše"],
-                            "spravna_odpoved": "Mongolská říše"
-                          }
-                        ]
-                      },
-                      {
-                        "uroven": 12,
-                        "otazky": [
-                          {
-                            "otazka": "Kdo je považován za zakladatele psychoanalýzy?",
-                            "moznosti": ["Sigmund Freud", "Carl Jung", "Ivan Pavlov", "Jean Piaget"],
-                            "spravna_odpoved": "Sigmund Freud"
-                          },
-                          {
-                            "otazka": "Který jazyk je nejstarším známým písemným jazykem?",
-                            "moznosti": ["Hebrejština", "Sumerština", "Egyptština", "Čínština"],
-                            "spravna_odpoved": "Sumerština"
-                          },
-                          {
-                            "otazka": "Které město bylo původně známé jako Byzantium?",
-                            "moznosti": ["Atény", "Rím", "Konstantinopol", "Jeruzalém"],
-                            "spravna_odpoved": "Konstantinopol"
-                          }
-                        ]
-                      },
-                      {
-                        "uroven": 13,
-                        "otazky": [
-                          {
-                            "otazka": "Co studuje kriptografie?",
-                            "moznosti": ["Živé organismy", "Vesmír", "Šifrování a zabezpečení dat", "Starověké civilizace"],
-                            "spravna_odpoved": "Šifrování a zabezpečení dat"
-                          },
-                          {
-                            "otazka": "Kdo napsal 'Principia Mathematica'?",
-                            "moznosti": ["Isaac Newton", "Albert Einstein", "Galileo Galilei", "Nicolaus Copernicus"],
-                            "spravna_odpoved": "Isaac Newton"
-                          },
-                          {
-                            "otazka": "Jaký prvek má nejvyšší bod varu?",
-                            "moznosti": ["Vodík", "Olovo", "Karbon", "Wolfram"],
-                            "spravna_odpoved": "Wolfram"
-                          }
-                        ]
-                      },
-                      {
-                        "uroven": 14,
-                        "otazky": [
-                          {
-                            "otazka": "Který filozof prohlásil 'Myslím, tedy jsem'?",
-                            "moznosti": ["René Descartes", "Sokrates", "Platón", "Aristoteles"],
-                            "spravna_odpoved": "René Descartes"
-                          },
-                          {
-                            "otazka": "Který proces přeměňuje zelené listy na žluté nebo červené v podzimních měsících?",
-                            "moznosti": ["Fotosyntéza", "Chlorofyl degradace", "Osmóza", "Respirace"],
-                            "spravna_odpoved": "Chlorofyl degradace"
-                          },
-                          {
-                            "otazka": "Která teorie popisuje chování částic na atomové a subatomové úrovni?",
-                            "moznosti": ["Relativita", "Kvantová mechanika", "Klasická mechanika", "Termodynamika"],
-                            "spravna_odpoved": "Kvantová mechanika"
-                          }
-                        ]
-                      },
-                      {
-                        "uroven": 15,
-                        "otazky": [
-                          {
-                            "otazka": "Co je Gödelova věta o neúplnosti?",
-                            "moznosti": ["V každém dostatečně silném axiomatickém systému existují tvrzení, která nelze dokázat ani vyvrátit", "Energie se v izolovaném systému zachovává", "Celkový počet informací v uzavřeném systému je konstantní", "Pohyb tělesa ve vesmíru je předurčen gravitačními silami"],
-                            "spravna_odpoved": "V každém dostatečně silném axiomatickém systému existují tvrzení, která nelze dokázat ani vyvrátit"
-                          },
-                          {
-                            "otazka": "Která částice je zodpovědná za přenos sil mezi kvarky?",
-                            "moznosti": ["Gluon", "Foton", "Boson", "Elektron"],
-                            "spravna_odpoved": "Gluon"
-                          },
-                          {
-                            "otazka": "Kdo je autorem teorie 'Mnohosvětová interpretace kvantové mechaniky'?",
-                            "moznosti": ["Hugh Everett", "Niels Bohr", "Erwin Schrödinger", "Werner Heisenberg"],
-                            "spravna_odpoved": "Hugh Everett"
-                          }
-                        ]
-                      }
+                        {
+                            "uroven": 11,
+                            "otazky": [
+                                {
+                                    "otazka": "S jakým programovacím jazykem začínají studenti oboru IT na Purkyňce?",
+                                    "moznosti": [
+                                        "C++",
+                                        "C#",
+                                        "JavaScript",
+                                        "Python"
+                                    ],
+                                    "spravna_odpoved": "Python"
+                                },
+                                {
+                                    "otazka": "Jaký je chemický vzorec pro ozon?",
+                                    "moznosti": [
+                                        "O3",
+                                        "O2",
+                                        "CO2",
+                                        "H2O"
+                                    ],
+                                    "spravna_odpoved": "O3"
+                                },
+                                {
+                                    "otazka": "Která z těchto říší neexistovala v období starověku?",
+                                    "moznosti": [
+                                        "Římská říše",
+                                        "Perská říše",
+                                        "Mongolská říše",
+                                        "Egyptská říše"
+                                    ],
+                                    "spravna_odpoved": "Mongolská říše"
+                                }
+                            ]
+                        },
+                        {
+                            "uroven": 12,
+                            "otazky": [
+                                {
+                                    "otazka": "Jaká stránka se dříve na Purkyňce používala na dokumenty?",
+                                    "moznosti": [
+                                        "Moodle",
+                                        "One Drive",
+                                        "Microsoft Teams",
+                                        "Google disk"
+                                    ],
+                                    "spravna_odpoved": "Moodle"
+                                },
+                                {
+                                    "otazka": "Který jazyk je nejstarším známým písemným jazykem?",
+                                    "moznosti": [
+                                        "Hebrejština",
+                                        "Sumerština",
+                                        "Egyptština",
+                                        "Čínština"
+                                    ],
+                                    "spravna_odpoved": "Sumerština"
+                                },
+                                {
+                                    "otazka": "Které město bylo původně známé jako Byzantium?",
+                                    "moznosti": [
+                                        "Atény",
+                                        "Rím",
+                                        "Konstantinopol",
+                                        "Jeruzalém"
+                                    ],
+                                    "spravna_odpoved": "Konstantinopol"
+                                }
+                            ]
+                        },
+                        {
+                            "uroven": 13,
+                            "otazky": [
+                                {
+                                    "otazka": "Co studuje kriptografie?",
+                                    "moznosti": [
+                                        "Živé organismy",
+                                        "Vesmír",
+                                        "Šifrování a zabezpečení dat",
+                                        "Starověké civilizace"
+                                    ],
+                                    "spravna_odpoved": "Šifrování a zabezpečení dat"
+                                },
+                                {
+                                    "otazka": "V jakém ročníku pracuje obor IT na takzvaných týmovkách na Purkyňce?",
+                                    "moznosti": [
+                                        "prvním",
+                                        "druhém",
+                                        "třetím",
+                                        "čtvrtém"
+                                    ],
+                                    "spravna_odpoved": "třetím"
+                                },
+                                {
+                                    "otazka": "Jaký prvek má nejvyšší bod varu?",
+                                    "moznosti": [
+                                        "Vodík",
+                                        "Olovo",
+                                        "Karbon",
+                                        "Wolfram"
+                                    ],
+                                    "spravna_odpoved": "Wolfram"
+                                }
+                            ]
+                        },
+                        {
+                            "uroven": 14,
+                            "otazky": [
+                                {
+                                    "otazka": "Který filozof prohlásil 'Myslím, tedy jsem'?",
+                                    "moznosti": [
+                                        "René Descartes",
+                                        "Sokrates",
+                                        "Platón",
+                                        "Aristoteles"
+                                    ],
+                                    "spravna_odpoved": "René Descartes"
+                                },
+                                {
+                                    "otazka": "Co je nejbližší kavárna k Purkyňce?",
+                                    "moznosti": [
+                                        "KOFI KOFI",
+                                        "Sesamo",
+                                        "Kočkafe",
+                                        "Roses"
+                                    ],
+                                    "spravna_odpoved": "Sesamo"
+                                },
+                                {
+                                    "otazka": "Která teorie popisuje chování částic na atomové a subatomové úrovni?",
+                                    "moznosti": [
+                                        "Relativita",
+                                        "Kvantová mechanika",
+                                        "Klasická mechanika",
+                                        "Termodynamika"
+                                    ],
+                                    "spravna_odpoved": "Kvantová mechanika"
+                                }
+                            ]
+                        },
+                        {
+                            "uroven": 15,
+                            "otazky": [
+                                {
+                                    "otazka": "V jakém roce vznikla škola Purkyňova?",
+                                    "moznosti": [
+                                        "1949",
+                                        "1989",
+                                        "2000",
+                                        "1955"
+                                    ],
+                                    "spravna_odpoved": "1949"
+                                },
+                                {
+                                    "otazka": "Která částice je zodpovědná za přenos sil mezi kvarky?",
+                                    "moznosti": [
+                                        "Gluon",
+                                        "Foton",
+                                        "Boson",
+                                        "Elektron"
+                                    ],
+                                    "spravna_odpoved": "Gluon"
+                                },
+                                {
+                                    "otazka": "Kdo je autorem teorie 'Mnohosvětová interpretace kvantové mechaniky'?",
+                                    "moznosti": [
+                                        "Hugh Everett",
+                                        "Niels Bohr",
+                                        "Erwin Schrödinger",
+                                        "Werner Heisenberg"
+                                    ],
+                                    "spravna_odpoved": "Hugh Everett"
+                                }
+                            ]
+                        }
                     ]
-                  }
+                }
             ]
-        }                  
+        }
     ]
 }
