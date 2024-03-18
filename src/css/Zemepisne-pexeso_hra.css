@@ -66,6 +66,8 @@ body, html {
     transform: rotateY(180deg);
 }
 
-.hidden {
-    display: none;
+.matched {
+    cursor: default;
+    opacity: 0.5;
 }
+

@@ -4,8 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let cardsFlipped = [];
     let isWaiting = false;
 
+    const scoreBoard = document.createElement('div');
+    scoreBoard.className = 'score-board';
+    scoreBoard.textContent = 'Skóre: 0';
+    document.body.insertBefore(scoreBoard, gameBoard);
+
     const states = [
-        { name: "Česko", flag: "obrazce\pexeso\vlajky\czech_flag.svg" },
+        { name: "Česko", flag: "czech_flag.svg" },
         { name: "Slovensko", flag: "slovakia_flag.svg" },
         { name: "Maďarsko", flag: "hungary_flag.svg" },
         { name: "Rakousko", flag: "austria_flag.svg" },
@@ -18,61 +23,71 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "Velká Británie", flag: "uk_flag.svg" },
         { name: "Švýcarsko", flag: "switzerland_flag.svg" }
     ];
-    const cardSet = [...states, ...states].sort(() => 0.5 - Math.random());
 
-    cardSet.forEach((state, index) => {
+    const cardSet = [...states.map(state => ({ ...state, type: 'name' })), ...states.map(state => ({ ...state, type: 'flag' }))].sort(() => 0.5 - Math.random());
+
+    cardSet.forEach((item, index) => {
         const card = document.createElement('div');
-        card.classList.add('card');
-        card.innerHTML = `
-            <div class="card-inner">
-                <div class="card-front"></div>
-                <div class="card-back">
-                    <img src="flags/${state.flag}" alt="${state.name} flag" style="width:100%; height:auto;">
-                    <p>${state.name}</p>
-                </div>
-            </div>`;
-        card.dataset.name = state.name;
+        card.className = 'card';
+        card.dataset.name = item.name;
+
+        const cardInner = document.createElement('div');
+        cardInner.className = 'card-inner';
+
+        const cardFront = document.createElement('div');
+        cardFront.className = 'card-front';
+
+        const cardBack = document.createElement('div');
+        cardBack.className = 'card-back';
+        if (item.type === 'flag') {
+            cardBack.innerHTML = `<img src="flags/${item.flag}" alt="${item.name}" style="width: 100%; height: auto;">`;
+        } else {
+            cardBack.textContent = item.name;
+        }
+
+        cardInner.appendChild(cardFront);
+        cardInner.appendChild(cardBack);
+        card.appendChild(cardInner);
+        gameBoard.appendChild(card);
 
         card.addEventListener('click', () => {
             if (isWaiting || card.classList.contains('flipped')) return;
             card.classList.add('flipped');
             cardsFlipped.push(card);
+
             if (cardsFlipped.length === 2) {
-                updateGame();
+                checkForMatch();
             }
         });
-
-        gameBoard.appendChild(card);
     });
 
-    function updateGame() {
-        const [firstCard, secondCard] = cardsFlipped;
-        if (firstCard.dataset.name === secondCard.dataset.name) {
-            score += 50;
-            firstCard.removeEventListener('click', flipCard);
-            secondCard.removeEventListener('click', flipCard);
-            firstCard.classList.add('hidden');
-            secondCard.classList.add('hidden');
-        } else {
-            score -= 10;
-            isWaiting = true;
-            setTimeout(() => {
+    function checkForMatch() {
+        isWaiting = true;
+
+        setTimeout(() => {
+            const [firstCard, secondCard] = cardsFlipped;
+
+            if (firstCard.dataset.name === secondCard.dataset.name) {
+                firstCard.classList.add('matched');
+                secondCard.classList.add('matched');
+                score += 50;
+            } else {
                 firstCard.classList.remove('flipped');
                 secondCard.classList.remove('flipped');
-                isWaiting = false;
-            }, 1000);
-        }
-        cardsFlipped = [];
-        updateScore();
-    }
+                score -= 10;
+            }
 
-    function flipCard() {
-        if (isWaiting) return;
-        this.classList.add('flipped');
+            updateScore();
+            cardsFlipped = [];
+            isWaiting = false;
+
+            if (document.querySelectorAll('.card:not(.matched)').length === 0) {
+                alert('Gratulace! Vyhráli jste hru!');
+            }
+        }, 1000);
     }
 
     function updateScore() {
-        const scoreBoard = document.querySelector('.score-board');
-        scoreBoard.innerText = `Skóre: ${score}`;
+        scoreBoard.textContent = 'Skóre: ' + score;
     }
 });
