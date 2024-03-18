@@ -72,7 +72,7 @@ p {
   /* Absolutní pozicování vůči svému nejbližšímu relativně pozicovanému předku */
   top: 36%;
   /* Nastaví text na střed obrázku, podle výšky */
-  left: 25%;
+  left: 37%;
   /* Nastaví text na střed obrázku, podle šířky */
   transform: translate(-50%, -50%);
   /* Posune text zpět o polovinu jeho výšky a šířky, aby byl přesně na středu */
