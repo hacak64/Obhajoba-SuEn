@@ -1,10 +1,13 @@
 // Globální proměnná pro uchování aktuální úrovně
 let aktualniUroven = 0;
+let penize = null;
 let pouziti_kamos = true;
 let pouziti_padenapade = true;
 let pouziti_lidi = true;
 let aktualniOtazkaData = null; // Globální proměnná pro uchování dat aktuální otázky
 let otazky_moznosti = null;
+
+
 
 document.addEventListener('DOMContentLoaded', function () {
     nactiOtazku(aktualniUroven);
@@ -24,6 +27,15 @@ function nactiOtazku(uroven) {
                     const otazkaData = otazky[Math.floor(Math.random() * otazky.length)];
                     aktualniOtazkaData = otazkaData; // Aktualizujeme globální proměnnou
 
+                    // Reset stavu odpovědí
+                    for (let i = 0; i < 4; i++) {
+                        const odpovedElem = document.getElementById('text_odpovedi' + String.fromCharCode(65 + i));
+                        if (odpovedElem) {
+                            odpovedElem.style.opacity = '1'; // Obnovíme plnou viditelnost
+                            odpovedElem.style.pointerEvents = 'auto'; // Znovu povolíme klikání
+                        }
+                    }
+
                     // Nastavit text otázky a odpovědí
                     document.getElementById('text_otazky').innerText = otazkaData.otazka;
                     for (let i = 0; i < otazkaData.moznosti.length; i++) {
@@ -40,7 +52,6 @@ function nactiOtazku(uroven) {
                                 }
                             } else {
                                 alert("Bohužel, to nebyla správná odpověď. Hra skončila.");
-                                // Zde přidáme logiku pro ukončení hry
                                 ukoncitHru();
                             }
                         };
@@ -54,6 +65,8 @@ function nactiOtazku(uroven) {
         })
         .catch(error => console.error('Chyba při načítání databáze:', error));
 }
+
+
 
 function kamos() {
     document.querySelector('.kamos').addEventListener('click', function() {
@@ -75,22 +88,44 @@ function kamos() {
 }
 function padenapade() {
     document.querySelector('.padenapade').addEventListener('click', function() {
-        if (pouziti_padenapade) { // Zkontrolujeme, jestli je použití kámoše dostupné
-            if (aktualniOtazkaData) { // Zkontrolujeme, jestli aktualniOtazkaData existuje
-                var spravnaOdpoved = aktualniOtazkaData.spravna_odpoved;
-                alert('Správná odpověď je: ' + spravnaOdpoved);
-                pouziti_padenapade = false; // Nastavíme pouziti_kamos na false, čímž zakážeme další použití
-                // Zde přidáme logiku pro vizuální deaktivaci tlačítka
-                document.querySelector('.padenapade').style.opacity = '0.5'; // Vizualizace deaktivace
-                document.querySelector('.padenapade').style.pointerEvents = 'none'; // Zakáže klikání na tlačítko
+        if (pouziti_padenapade) { // Zkontrolujeme, jestli je použití možné
+            if (aktualniOtazkaData) {
+                pouziti_padenapade = false; // Zakážeme další použití
+
+                // Získáme index správné odpovědi
+                const spravnaOdpovedIndex = aktualniOtazkaData.moznosti.indexOf(aktualniOtazkaData.spravna_odpoved);
+                let spatneIndexy = [];
+
+                // Najdeme indexy špatných odpovědí
+                for (let i = 0; i < aktualniOtazkaData.moznosti.length; i++) {
+                    if (i !== spravnaOdpovedIndex) {
+                        spatneIndexy.push(i);
+                    }
+                }
+
+                // Náhodně vybereme jeden špatný index k zobrazení a dva k zatmavení
+                spatneIndexy = spatneIndexy.filter(index => index !== spravnaOdpovedIndex);
+                const zatmaveneIndexy = spatneIndexy.length > 2 ? spatneIndexy.sort(() => .5 - Math.random()).slice(0, 2) : spatneIndexy;
+
+                // Projdeme všechny možnosti a zatmíme dva špatné odpovědi
+                zatmaveneIndexy.forEach(index => {
+                    const elementOdpovedi = document.getElementById('text_odpovedi' + String.fromCharCode(65 + index));
+                    elementOdpovedi.style.opacity = '0.5';
+                    elementOdpovedi.style.pointerEvents = 'none'; // Zabráníme klikání na zatmavené odpovědi
+                });
+
+                // Vizuální deaktivace tlačítka
+                document.querySelector('.padenapade').style.opacity = '0.5';
+                document.querySelector('.padenapade').style.pointerEvents = 'none';
             } else {
                 console.error('Nebyla načtena žádná otázka.');
             }
         } else {
-            alert('Nápověda kámoše již byla použita a není dostupná.');
+            alert('Nápověda již byla použita a není dostupná.');
         }
     });
 }
+
 function lidi() {
     document.querySelector('.lidi').addEventListener('click', function() {
         if (pouziti_lidi) { // Zkontrolujeme, jestli je použití kámoše dostupné
