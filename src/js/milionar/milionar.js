@@ -4,12 +4,14 @@ let pouziti_kamos = true;
 let pouziti_padenapade = true;
 let pouziti_lidi = true;
 let aktualniOtazkaData = null; // Globální proměnná pro uchování dat aktuální otázky
+let otazky_moznosti = null;
 
 document.addEventListener('DOMContentLoaded', function () {
     nactiOtazku(aktualniUroven);
+    kamos();
+    padenapade()
+    lidi()
 });
-
-
 
 function nactiOtazku(uroven) {
     fetch('../../json/milionar/databaze.json')
@@ -37,8 +39,9 @@ function nactiOtazku(uroven) {
                                     alert("Gratulujeme, vyhráli jste!");
                                 }
                             } else {
-                                alert("Bohužel, to nebyla správná odpověď.");
-                                // Zde můžete přidat logiku pro ukončení hry nebo restart
+                                alert("Bohužel, to nebyla správná odpověď. Hra skončila.");
+                                // Zde přidáme logiku pro ukončení hry
+                                ukoncitHru();
                             }
                         };
                     }
@@ -52,13 +55,78 @@ function nactiOtazku(uroven) {
         .catch(error => console.error('Chyba při načítání databáze:', error));
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+function kamos() {
     document.querySelector('.kamos').addEventListener('click', function() {
-        if (aktualniOtazkaData) { // Zkontrolujeme, jestli aktualniOtazkaData existuje
-            var spravnaOdpoved = aktualniOtazkaData.spravna_odpoved;
-            alert('Správná odpověď je: ' + spravnaOdpoved);
+        if (pouziti_kamos) { // Zkontrolujeme, jestli je použití kámoše dostupné
+            if (aktualniOtazkaData) { // Zkontrolujeme, jestli aktualniOtazkaData existuje
+                var spravnaOdpoved = aktualniOtazkaData.spravna_odpoved;
+                alert('Správná odpověď je: ' + spravnaOdpoved);
+                pouziti_kamos = false; // Nastavíme pouziti_kamos na false, čímž zakážeme další použití
+                // Zde přidáme logiku pro vizuální deaktivaci tlačítka
+                document.querySelector('.kamos').style.opacity = '0.5'; // Vizualizace deaktivace
+                document.querySelector('.kamos').style.pointerEvents = 'none'; // Zakáže klikání na tlačítko
+            } else {
+                console.error('Nebyla načtena žádná otázka.');
+            }
         } else {
-            console.error('Nebyla načtena žádná otázka.');
+            alert('Nápověda kámoše již byla použita a není dostupná.');
         }
     });
-});
+}
+function padenapade() {
+    document.querySelector('.padenapade').addEventListener('click', function() {
+        if (pouziti_padenapade) { // Zkontrolujeme, jestli je použití kámoše dostupné
+            if (aktualniOtazkaData) { // Zkontrolujeme, jestli aktualniOtazkaData existuje
+                var spravnaOdpoved = aktualniOtazkaData.spravna_odpoved;
+                alert('Správná odpověď je: ' + spravnaOdpoved);
+                pouziti_padenapade = false; // Nastavíme pouziti_kamos na false, čímž zakážeme další použití
+                // Zde přidáme logiku pro vizuální deaktivaci tlačítka
+                document.querySelector('.padenapade').style.opacity = '0.5'; // Vizualizace deaktivace
+                document.querySelector('.padenapade').style.pointerEvents = 'none'; // Zakáže klikání na tlačítko
+            } else {
+                console.error('Nebyla načtena žádná otázka.');
+            }
+        } else {
+            alert('Nápověda kámoše již byla použita a není dostupná.');
+        }
+    });
+}
+function lidi() {
+    document.querySelector('.lidi').addEventListener('click', function() {
+        if (pouziti_lidi) { // Zkontrolujeme, jestli je použití kámoše dostupné
+            if (aktualniOtazkaData) { // Zkontrolujeme, jestli aktualniOtazkaData existuje
+                var spravnaOdpoved = aktualniOtazkaData.spravna_odpoved;
+                alert('Správná odpověď je: ' + spravnaOdpoved);
+                pouziti_lidi = false; // Nastavíme pouziti_kamos na false, čímž zakážeme další použití
+                // Zde přidáme logiku pro vizuální deaktivaci tlačítka
+                document.querySelector('.lidi').style.opacity = '0.5'; // Vizualizace deaktivace
+                document.querySelector('.lidi').style.pointerEvents = 'none'; // Zakáže klikání na tlačítko
+            } else {
+                console.error('Nebyla načtena žádná otázka.');
+            }
+        } else {
+            alert('Nápověda kámoše již byla použita a není dostupná.');
+        }
+    });
+}
+
+function ukoncitHru() {
+    // Zde můžete přidat jakoukoliv logiku pro ukončení hry
+    // Například: Skrytí herní oblasti, zobrazení zprávy o konečném skóre, atd.
+    alert("Hra skončila. Děkujeme za hraní!");
+
+    // Deaktivace všech tlačítek odpovědí
+    for (let i = 0; i < 4; i++) { // Předpokládáme, že máte 4 možnosti odpovědí
+        const odpovedElem = document.getElementById('text_odpovedi' + String.fromCharCode(65 + i));
+        if (odpovedElem) {
+            odpovedElem.style.pointerEvents = 'none';
+            odpovedElem.style.opacity = '0.5';
+        }
+    }
+
+    // Volitelně můžete přidat tlačítko pro restart hry nebo přesměrovat uživatele na úvodní stránku
+    // Například:
+    // document.location.reload(); // Pro načtení stránky znovu
+    // nebo přidání tlačítka pro restart a jeho obsluhu
+}
+
