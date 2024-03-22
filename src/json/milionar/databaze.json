@@ -25,7 +25,7 @@
                     "spravna_odpoved": "7"
                 },
                 {
-                    "otazka": "Kolik má Purkyňka pater",
+                    "otazka": "Kolik má Purkyňka podlaží",
                     "moznosti": [
                         "0",
                         "2.5",
@@ -424,7 +424,7 @@
                     "otazka": "Které město bylo původně známé jako Byzantium?",
                     "moznosti": [
                         "Atény",
-                        "Rím",
+                        "Řím",
                         "Konstantinopol",
                         "Jeruzalém"
                     ],

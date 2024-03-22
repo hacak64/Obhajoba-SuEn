@@ -69,14 +69,22 @@ function nactiOtazku(uroven) {
 
 
 function kamos() {
-    document.querySelector('.kamos').addEventListener('click', function() {
+    document.querySelector('.kamos').addEventListener('click', function () {
         if (pouziti_kamos) { // Zkontrolujeme, jestli je použití kámoše dostupné
             if (aktualniOtazkaData) { // Zkontrolujeme, jestli aktualniOtazkaData existuje
-                var spravnaOdpoved = aktualniOtazkaData.spravna_odpoved;
-                alert('Správná odpověď je: ' + spravnaOdpoved);
+                let zvolenaOdpoved;
+                if (Math.random() <= 0.9) { // 90% šance na správnou odpověď
+                    zvolenaOdpoved = aktualniOtazkaData.spravna_odpoved;
+                } else { // 10% šance na nesprávnou odpověď
+                    // Získáme nesprávné odpovědi
+                    let nespravneOdpovedi = aktualniOtazkaData.moznosti.filter(odpoved => odpoved !== aktualniOtazkaData.spravna_odpoved);
+                    // Náhodně vybereme jednu z nesprávných odpovědí
+                    zvolenaOdpoved = nespravneOdpovedi[Math.floor(Math.random() * nespravneOdpovedi.length)];
+                }
+                alert('Správná odpověď je: ' + zvolenaOdpoved);
                 pouziti_kamos = false; // Nastavíme pouziti_kamos na false, čímž zakážeme další použití
-                // Zde přidáme logiku pro vizuální deaktivaci tlačítka
-                document.querySelector('.kamos').style.opacity = '0.5'; // Vizualizace deaktivace
+                // Vizuální deaktivace tlačítka
+                document.querySelector('.kamos').style.opacity = '0.5';
                 document.querySelector('.kamos').style.pointerEvents = 'none'; // Zakáže klikání na tlačítko
             } else {
                 console.error('Nebyla načtena žádná otázka.');
@@ -86,8 +94,9 @@ function kamos() {
         }
     });
 }
+
 function padenapade() {
-    document.querySelector('.padenapade').addEventListener('click', function() {
+    document.querySelector('.padenapade').addEventListener('click', function () {
         if (pouziti_padenapade) { // Zkontrolujeme, jestli je použití možné
             if (aktualniOtazkaData) {
                 pouziti_padenapade = false; // Zakážeme další použití
@@ -127,7 +136,9 @@ function padenapade() {
 }
 
 function lidi() {
-    document.querySelector('.lidi').addEventListener('click', function() {
+    let procenta = [];
+    for 
+    document.querySelector('.lidi').addEventListener('click', function () {
         if (pouziti_lidi) { // Zkontrolujeme, jestli je použití kámoše dostupné
             if (aktualniOtazkaData) { // Zkontrolujeme, jestli aktualniOtazkaData existuje
                 var spravnaOdpoved = aktualniOtazkaData.spravna_odpoved;
