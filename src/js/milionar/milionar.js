@@ -1,6 +1,6 @@
 // Globální proměnná pro uchování aktuální úrovně
-let aktualniUroven = 0;
-let penize = null;
+let aktualniUroven = 1;
+let penize = 100;
 let pouziti_kamos = true;
 let pouziti_padenapade = true;
 let pouziti_lidi = true;
@@ -16,6 +16,33 @@ document.addEventListener('DOMContentLoaded', function () {
     lidi()
 });
 
+function nastavitAktualniHodnoty(data) {
+    if (data.urovne && data.urovne[aktualniUroven - 1]) {
+        const urovenData = data.urovne[aktualniUroven - 1];
+
+        // Aktualizace peněz podle aktuální úrovně
+        penize = urovenData.penize;
+
+        // Formátování peněz s mezerami po třech místech
+        const formatovanePenize = penize.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+
+        // Získáme element, kam chceme vložit text
+        const splnenoTextElement = document.getElementById('splneno_text');
+
+        // Zkontrolujeme, jestli element existuje
+        if (splnenoTextElement) {
+            // Nastavíme text elementu na formát "X/Y Z $", kde X je aktuální úroveň, Y je celkový počet úrovní a Z jsou formátované peníze
+            splnenoTextElement.innerText = `${aktualniUroven}/${data.urovne.length} ${formatovanePenize}$`;
+        } else {
+            console.error('Element pro zobrazení stavu hry nebyl nalezen.');
+        }
+    } else {
+        console.error('Úroveň neexistuje v databázi nebo chyba ve struktuře dat.');
+    }
+}
+
+
+
 function nactiOtazku(uroven) {
     fetch('../../json/milionar/databaze.json')
         .then(response => response.json())
@@ -26,7 +53,7 @@ function nactiOtazku(uroven) {
                 if (otazky.length > 0) {
                     const otazkaData = otazky[Math.floor(Math.random() * otazky.length)];
                     aktualniOtazkaData = otazkaData; // Aktualizujeme globální proměnnou
-
+                    nastavitAktualniHodnoty(data);
                     // Reset stavu odpovědí
                     for (let i = 0; i < 4; i++) {
                         const odpovedElem = document.getElementById('text_odpovedi' + String.fromCharCode(65 + i));
@@ -35,6 +62,7 @@ function nactiOtazku(uroven) {
                             odpovedElem.style.pointerEvents = 'auto'; // Znovu povolíme klikání
                         }
                     }
+                    console.log(aktualniUroven)
 
                     // Nastavit text otázky a odpovědí
                     document.getElementById('text_otazky').innerText = otazkaData.otazka;
@@ -136,9 +164,21 @@ function padenapade() {
 }
 
 function lidi() {
-    let procenta = [];
-    for 
     document.querySelector('.lidi').addEventListener('click', function () {
+        let procenta = [];
+        let soucet = 0;
+
+        for (let i = 0; i < 3; i++) {
+            // Generuje náhodné číslo tak, aby zaručilo pozitivní zbylé čtvrté číslo
+            let cislo = Math.floor(Math.random() * (100 - soucet - (3 - i) * 1)) + 1;
+            procenta.push(cislo);
+            soucet += cislo;
+        }
+
+        // Dopočítá čtvrté číslo tak, aby součet byl přesně 100
+        procenta.push(100 - soucet);
+
+        alert(procenta);
         if (pouziti_lidi) { // Zkontrolujeme, jestli je použití kámoše dostupné
             if (aktualniOtazkaData) { // Zkontrolujeme, jestli aktualniOtazkaData existuje
                 var spravnaOdpoved = aktualniOtazkaData.spravna_odpoved;
