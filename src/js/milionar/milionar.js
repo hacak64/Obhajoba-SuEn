@@ -54,16 +54,16 @@ function nactiOtazku(uroven) {
                     const otazkaData = otazky[Math.floor(Math.random() * otazky.length)];
                     aktualniOtazkaData = otazkaData; // Aktualizujeme globální proměnnou
                     nastavitAktualniHodnoty(data);
-                    // Reset stavu odpovědí
+
+                    // Reset barvy textu a stavu odpovědí
                     for (let i = 0; i < 4; i++) {
                         const odpovedElem = document.getElementById('text_odpovedi' + String.fromCharCode(65 + i));
                         if (odpovedElem) {
+                            odpovedElem.style.color = 'white'; // Reset barvy textu na bílou
                             odpovedElem.style.opacity = '1'; // Obnovíme plnou viditelnost
                             odpovedElem.style.pointerEvents = 'auto'; // Znovu povolíme klikání
                         }
                     }
-                    console.log(aktualniUroven)
-
                     // Nastavit text otázky a odpovědí
                     document.getElementById('text_otazky').innerText = otazkaData.otazka;
                     for (let i = 0; i < otazkaData.moznosti.length; i++) {
@@ -72,7 +72,6 @@ function nactiOtazku(uroven) {
                         odpovedElem.onclick = () => {
                             if (otazkaData.moznosti[i] === otazkaData.spravna_odpoved) {
                                 if (aktualniUroven < data.urovne.length - 1) {
-                                    console.log(otazkaData.spravna_odpoved)
                                     aktualniUroven++;
                                     nactiOtazku(aktualniUroven);
                                 } else {
@@ -104,13 +103,20 @@ function kamos() {
                 if (Math.random() <= 0.9) { // 90% šance na správnou odpověď
                     zvolenaOdpoved = aktualniOtazkaData.spravna_odpoved;
                 } else { // 10% šance na nesprávnou odpověď
-                    // Získáme nesprávné odpovědi
                     let nespravneOdpovedi = aktualniOtazkaData.moznosti.filter(odpoved => odpoved !== aktualniOtazkaData.spravna_odpoved);
-                    // Náhodně vybereme jednu z nesprávných odpovědí
                     zvolenaOdpoved = nespravneOdpovedi[Math.floor(Math.random() * nespravneOdpovedi.length)];
                 }
-                alert('Správná odpověď je: ' + zvolenaOdpoved);
+
+                // Najdeme index správné odpovědi
+                const spravnaOdpovedIndex = aktualniOtazkaData.moznosti.indexOf(zvolenaOdpoved);
+
+                // Změníme barvu textu správné odpovědi na zelenou
+                const spravnaOdpovedElem = document.getElementById('text_odpovedi' + String.fromCharCode(65 + spravnaOdpovedIndex));
+                if (spravnaOdpovedElem) {
+                    spravnaOdpovedElem.style.color = 'green'; // Změna barvy textu na zelenou
+                }
                 pouziti_kamos = false; // Nastavíme pouziti_kamos na false, čímž zakážeme další použití
+                
                 // Vizuální deaktivace tlačítka
                 document.querySelector('.kamos').style.opacity = '0.5';
                 document.querySelector('.kamos').style.pointerEvents = 'none'; // Zakáže klikání na tlačítko
@@ -122,6 +128,7 @@ function kamos() {
         }
     });
 }
+
 
 function padenapade() {
     document.querySelector('.padenapade').addEventListener('click', function () {
@@ -144,7 +151,7 @@ function padenapade() {
                 spatneIndexy = spatneIndexy.filter(index => index !== spravnaOdpovedIndex);
                 const zatmaveneIndexy = spatneIndexy.length > 2 ? spatneIndexy.sort(() => .5 - Math.random()).slice(0, 2) : spatneIndexy;
 
-                // Projdeme všechny možnosti a zatmíme dva špatné odpovědi
+                // Projdeme všechny možnosti a zatmavíme dvě špatné odpovědi
                 zatmaveneIndexy.forEach(index => {
                     const elementOdpovedi = document.getElementById('text_odpovedi' + String.fromCharCode(65 + index));
                     elementOdpovedi.style.opacity = '0.5';
@@ -165,36 +172,44 @@ function padenapade() {
 
 function lidi() {
     document.querySelector('.lidi').addEventListener('click', function () {
+        if (!pouziti_lidi || !aktualniOtazkaData) {
+            alert('Nápověda již byla použita nebo neexistuje žádná otázka.');
+            return;
+        }
+        pouziti_lidi = false;
+
+        // Generujeme náhodná procenta a ujistíme se, že součet je 100
         let procenta = [];
-        let soucet = 0;
-
         for (let i = 0; i < 3; i++) {
-            // Generuje náhodné číslo tak, aby zaručilo pozitivní zbylé čtvrté číslo
-            let cislo = Math.floor(Math.random() * (100 - soucet - (3 - i) * 1)) + 1;
+            let cislo = Math.floor(Math.random() * 25) + 1; // Zajistíme, že každá hodnota bude alespoň 1% a maximálně 25%
             procenta.push(cislo);
-            soucet += cislo;
         }
+        let soucetProcent = procenta.reduce((a, b) => a + b, 0);
+        procenta.push(100 - soucetProcent); // Zbývající hodnota pro správnou odpověď
 
-        // Dopočítá čtvrté číslo tak, aby součet byl přesně 100
-        procenta.push(100 - soucet);
+        // Náhodně zamícháme procenta tak, aby nejvyšší hodnota nebyla vždy na stejném místě
+        procenta.sort(() => Math.random() - 0.5);
 
-        alert(procenta);
-        if (pouziti_lidi) { // Zkontrolujeme, jestli je použití kámoše dostupné
-            if (aktualniOtazkaData) { // Zkontrolujeme, jestli aktualniOtazkaData existuje
-                var spravnaOdpoved = aktualniOtazkaData.spravna_odpoved;
-                alert('Správná odpověď je: ' + spravnaOdpoved);
-                pouziti_lidi = false; // Nastavíme pouziti_kamos na false, čímž zakážeme další použití
-                // Zde přidáme logiku pro vizuální deaktivaci tlačítka
-                document.querySelector('.lidi').style.opacity = '0.5'; // Vizualizace deaktivace
-                document.querySelector('.lidi').style.pointerEvents = 'none'; // Zakáže klikání na tlačítko
-            } else {
-                console.error('Nebyla načtena žádná otázka.');
+        // Nyní přiřadíme nejvyšší hodnotu k správné odpovědi
+        const indexSpravneOdpovedi = aktualniOtazkaData.moznosti.indexOf(aktualniOtazkaData.spravna_odpoved);
+        const nejvyssiHodnota = Math.max(...procenta);
+        procenta[procenta.indexOf(nejvyssiHodnota)] = procenta[indexSpravneOdpovedi];
+        procenta[indexSpravneOdpovedi] = nejvyssiHodnota;
+
+        // Zobrazíme procenta vedle textů odpovědí
+        for (let i = 0; i < 4; i++) {
+            const odpovedElem = document.getElementById('text_odpovedi' + String.fromCharCode(65 + i));
+            if (odpovedElem) {
+                odpovedElem.textContent += ' - ' + procenta[i] + '%';
             }
-        } else {
-            alert('Nápověda kámoše již byla použita a není dostupná.');
         }
+
+        // Deaktivujeme tlačítko a nastavíme jeho styl na "použito"
+        document.querySelector('.lidi').style.opacity = '0.5';
+        document.querySelector('.lidi').style.pointerEvents = 'none';
     });
 }
+
 
 function ukoncitHru() {
     // Zde můžete přidat jakoukoliv logiku pro ukončení hry
