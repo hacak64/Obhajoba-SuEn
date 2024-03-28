@@ -181,7 +181,7 @@ function lidi() {
         // Generujeme náhodná procenta a ujistíme se, že součet je 100
         let procenta = [];
         for (let i = 0; i < 3; i++) {
-            let cislo = Math.floor(Math.random() * 25) + 1; // Zajistíme, že každá hodnota bude alespoň 1% a maximálně 25%
+            let cislo = Math.floor(Math.random() * 35) + 1; // Zajistíme, že každá hodnota bude alespoň 1% a maximálně 25%
             procenta.push(cislo);
         }
         let soucetProcent = procenta.reduce((a, b) => a + b, 0);
