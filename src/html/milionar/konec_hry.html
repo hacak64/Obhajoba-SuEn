@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' href='../../css/milionar/milionar.css'>
+  <link href='https://fonts.googleapis.com/css?family=Russo One' rel='stylesheet'>
+  <title>Milionář</title>
+  <link rel="icon" href="icon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="../../../obrazce/milionar/logo.svg" type="image/x-icon">
+</head>
+<body>
+  <img src="../../../obrazce/milionar/logo.svg" alt="logo" class="logo"/>
+  <div class="tlacitka-menu">
+    <h1>GAME OVER</h1>
+    <h2 id="skore"><span id="scoreValue">0</span>/15 <span id="moneyValue">0</span> $</h2>
+    <a href="milionar_hra.html"><img src="../../../obrazce/milionar/Restartovat.svg" alt="hrát" class="hrat"/></a>
+    <a href="../komplet.html"><img src="../../../obrazce/milionar/zpet.svg" alt="zpět" class="zpet"/></a>
+  </div>
+
+  <script>
+    // Funkce pro získání hodnoty parametru z URL
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    // Nastavení skóre a peněz z URL do HTML
+    document.getElementById('scoreValue').textContent = getQueryParam('score');
+    document.getElementById('moneyValue').textContent = getQueryParam('money');
+  </script>
+</body>
+</html>

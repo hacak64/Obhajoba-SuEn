@@ -75,7 +75,7 @@ function nactiOtazku(uroven) {
                                     aktualniUroven++;
                                     nactiOtazku(aktualniUroven);
                                 } else {
-                                    alert("Gratulujeme, vyhráli jste!");
+                                    window.location.href = "vyhra_hry.html"
                                 }
                             } else {
                                 alert("Bohužel, to nebyla správná odpověď. Hra skončila.");
@@ -214,7 +214,6 @@ function lidi() {
 function ukoncitHru() {
     // Zde můžete přidat jakoukoliv logiku pro ukončení hry
     // Například: Skrytí herní oblasti, zobrazení zprávy o konečném skóre, atd.
-    alert("Hra skončila. Děkujeme za hraní!");
 
     // Deaktivace všech tlačítek odpovědí
     for (let i = 0; i < 4; i++) { // Předpokládáme, že máte 4 možnosti odpovědí
@@ -225,9 +224,8 @@ function ukoncitHru() {
         }
     }
 
-    // Volitelně můžete přidat tlačítko pro restart hry nebo přesměrovat uživatele na úvodní stránku
-    // Například:
-    // document.location.reload(); // Pro načtení stránky znovu
-    // nebo přidání tlačítka pro restart a jeho obsluhu
+    // Přesměrování na stránku 'konec_hry.html'
+    window.location.href = 'konec_hry.html?score=' + aktualniUroven + '&money=' + penize
+
 }
 
