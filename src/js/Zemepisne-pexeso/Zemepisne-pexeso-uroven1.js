@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "Polsko", flag: "poland_flag.svg" },
         { name: "Itálie", flag: "italy_flag.svg" },
         { name: "Chorvatsko", flag: "croatia_flag.svg" },
+
     ];
 
     const cardSet = [...states.map(state => ({ ...state, type: 'name' })), ...states.map(state => ({ ...state, type: 'flag' }))].sort(() => 0.5 - Math.random());

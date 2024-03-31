@@ -55,7 +55,7 @@ img[alt="az-kviz"] {
   max-height: 100%; /* nebo použijte % hodnotu v závislosti na vašem layoutu */
   height: auto;
   width: auto;
-  top: 0;
+  bottom: 0;
   left: 1000px;
   justify-content: center;
   transition: transform 0.3s;
