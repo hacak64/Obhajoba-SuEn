@@ -375,14 +375,14 @@
                     "spravna_odpoved": "Python"
                 },
                 {
-                    "otazka": "Jaký je chemický vzorec pro ozon?",
+                    "otazka": "Stejnolehlost se jinak řekne?",
                     "moznosti": [
-                        "O3",
-                        "O2",
-                        "CO2",
-                        "H2O"
+                        "homonomia",
+                        "homomorfizmus",
+                        "homotetia",
+                        "homopatia"
                     ],
-                    "spravna_odpoved": "O3"
+                    "spravna_odpoved": "homotetia"
                 },
                 {
                     "otazka": "Která z těchto říší neexistovala v období starověku?",
