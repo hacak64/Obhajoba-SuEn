@@ -64,7 +64,7 @@ p {
   /* Absolutní pozicování vůči svému nejbližšímu relativně pozicovanému předku */
   top: 36%;
   /* Nastaví text na střed obrázku, podle výšky */
-  left: 37%;
+  left: 50%;
   /* Nastaví text na střed obrázku, podle šířky */
   transform: translate(-50%, -50%);
   /* Posune text zpět o polovinu jeho výšky a šířky, aby byl přesně na středu */
@@ -114,7 +114,7 @@ p {
 .text_odpovediD {
   position: absolute;
   top: 32%;
-  left: 35%;
+  left: 50%;
   transform: translate(-50%, -50%);
   color: white;
   text-align: center;
