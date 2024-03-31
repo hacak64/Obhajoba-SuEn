@@ -23,22 +23,14 @@ p {
 }
 
 .splneno {
-  position:fixed; /* nastavení relativní pozice */
-  display: inline-block;
-}
-
-.splneno_tvar {
- position: fixed;/* nastavení absolutní pozice */
-  top: 2; /* umístění obrázku nahoru */
-  left: 2; /* umístění obrázku doleva */
-}
-
-.splneno_texty {
-  position: relative; /* nastavení absolutní pozice */
-  top: 50%; /* umístění textu na polovinu výšky rodičovského prvku */
-  left: 50%; /* umístění textu na polovinu šířky rodičovského prvku */
-  transform: translate(-50%, -50%); /* posunutí textu o polovinu své vlastní šířky a výšky doleva a nahoru, aby byl středem */
-  text-align: center; /* zarovnání textu na střed */
+  position: fixed; /* Umožní, aby div zůstal vlevo nahoře, i když uživatel posouvá stránku */
+  top: 1; /* Horní okraj divu bude na horním okraji viewportu */
+  left: 0; /* Levý okraj divu bude na levém okraji viewportu */
+  display: inline-block; /* Udrží velikost divu podle obsahu */
+  z-index: 1000; /* Zajistí, že div bude na vrchu ostatních prvků stránky */
+  color: white; /* Barva textu */
+  font-size: 30px; /* Zvětší velikost fontu */
+  padding: 10px; /* Přidá trochu prostoru kolem textu */
 }
 
 .zpet {

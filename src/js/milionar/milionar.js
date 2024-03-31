@@ -16,6 +16,21 @@ document.addEventListener('DOMContentLoaded', function () {
     lidi()
 });
 
+function vyhodnotitOdpoved(otazkaData, indexOdpovedi, data) {
+    const vybranaOdpoved = otazkaData.moznosti[indexOdpovedi];
+    if (vybranaOdpoved === otazkaData.spravna_odpoved) {
+        aktualniUroven++;
+        if (aktualniUroven <= data.urovne.length) {
+            nactiOtazku(aktualniUroven); // Načte další otázku, pokud existuje
+        } else {
+            // Pokud už neexistují další otázky, uživatel vyhrál hru
+            window.location.href = "vyhra_hry.html"; // Přesměrování na stránku s výhrou
+        }
+    } else {
+        ukoncitHru(); // Volání funkce pro ukončení hry
+    }
+}
+
 function nastavitAktualniHodnoty(data) {
     if (data.urovne && data.urovne[aktualniUroven - 1]) {
         const urovenData = data.urovne[aktualniUroven - 1];
@@ -40,7 +55,22 @@ function nastavitAktualniHodnoty(data) {
         console.error('Úroveň neexistuje v databázi nebo chyba ve struktuře dat.');
     }
 }
+function nastavitOtazkyAOdpovedi(otazkaData, data) {
+    document.getElementById('text_otazky').innerText = otazkaData.otazka;
 
+    for (let i = 0; i < otazkaData.moznosti.length; i++) {
+        const odpovedTextElem = document.getElementById('text_odpovedi' + String.fromCharCode(65 + i));
+        const odpovedObrazekElem = document.getElementById('odpoved' + String.fromCharCode(65 + i) + '_tvar'); // Opraveno
+
+        odpovedTextElem.innerText = otazkaData.moznosti[i];
+        odpovedTextElem.onclick = () => vyhodnotitOdpoved(otazkaData, i, data);
+
+        if (odpovedObrazekElem) {
+            odpovedObrazekElem.style.cursor = 'pointer';
+            odpovedObrazekElem.onclick = () => vyhodnotitOdpoved(otazkaData, i, data);
+        }
+    }
+}
 
 
 function nactiOtazku(uroven) {
@@ -54,7 +84,7 @@ function nactiOtazku(uroven) {
                     const otazkaData = otazky[Math.floor(Math.random() * otazky.length)];
                     aktualniOtazkaData = otazkaData; // Aktualizujeme globální proměnnou
                     nastavitAktualniHodnoty(data);
-
+                    nastavitOtazkyAOdpovedi(otazkaData, data);
                     // Reset barvy textu a stavu odpovědí
                     for (let i = 0; i < 4; i++) {
                         const odpovedElem = document.getElementById('text_odpovedi' + String.fromCharCode(65 + i));
@@ -93,8 +123,6 @@ function nactiOtazku(uroven) {
         .catch(error => console.error('Chyba při načítání databáze:', error));
 }
 
-
-
 function kamos() {
     document.querySelector('.kamos').addEventListener('click', function () {
         if (pouziti_kamos) { // Zkontrolujeme, jestli je použití kámoše dostupné
@@ -116,7 +144,7 @@ function kamos() {
                     spravnaOdpovedElem.style.color = 'green'; // Změna barvy textu na zelenou
                 }
                 pouziti_kamos = false; // Nastavíme pouziti_kamos na false, čímž zakážeme další použití
-                
+
                 // Vizuální deaktivace tlačítka
                 document.querySelector('.kamos').style.opacity = '0.5';
                 document.querySelector('.kamos').style.pointerEvents = 'none'; // Zakáže klikání na tlačítko
