@@ -16,7 +16,7 @@ body, html {
 
 .game-board {
     display: grid;
-    grid-template-columns: repeat(6, 1fr); /* 6 sloupců */
+    grid-template-columns: repeat(4, 1fr); /*4 sloupce */
     gap: 10px; /* mezery mezi kartami */
     max-width: 90vw;
     margin: auto;
@@ -57,7 +57,7 @@ body, html {
 .card-front {
     min-height: 200px;
     min-width: 200px;
-    background-image: url('../../obrazce/pexeso/Karta.svg'); /* Upravte cestu podle vašeho umístění souboru */
+    background-image: url('/obrazce/pexeso/Karta.svg'); /* Upravte cestu podle vašeho umístění souboru */
     background-size: cover;
 }
 
