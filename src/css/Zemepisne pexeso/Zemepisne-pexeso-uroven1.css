@@ -62,10 +62,29 @@ body, html {
     background-size: cover;
 }
 
+   
 .card-back {
-    background-color: #cc9966;
+    background-color: rgba(225, 169, 169, 0.782);
     transform: rotateY(180deg);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10%; /* Ohraničení kolem vlajky, upravte podle potřeby */
+    box-sizing: border-box; /* Zahrnutí paddingu do celkové velikosti */
+    border-radius: 15% ; /* Zaoblení rohů karty */
 }
+
+.card-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Zajistí, že celý obrázek vlajky bude vidět */
+}
+    
 
 .matched {
     cursor: default;

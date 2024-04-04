@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const cardBack = document.createElement('div');
         cardBack.className = 'card-back';
         if (item.type === 'flag') {
-            cardBack.innerHTML = `<img src="flags/${item.flag}" alt="${item.name}" style="width: 100%; height: auto;">`;
+            cardBack.innerHTML = `<img src="/obrazce/pexeso/vlajky/${item.flag}" alt="${item.name}" style="width: 100%; height: auto;">`;
         } else {
             cardBack.textContent = item.name;
         }
