@@ -15,7 +15,8 @@ body {
 p {
   color: white;
 }
-.logo{
+
+.logo {
   position: static;
   height: auto;
   width: 15%;
@@ -23,14 +24,22 @@ p {
 }
 
 .splneno {
-  position: fixed; /* Umožní, aby div zůstal vlevo nahoře, i když uživatel posouvá stránku */
-  top: 1; /* Horní okraj divu bude na horním okraji viewportu */
-  left: 0; /* Levý okraj divu bude na levém okraji viewportu */
-  display: inline-block; /* Udrží velikost divu podle obsahu */
-  z-index: 1000; /* Zajistí, že div bude na vrchu ostatních prvků stránky */
-  color: white; /* Barva textu */
-  font-size: 30px; /* Zvětší velikost fontu */
-  padding: 10px; /* Přidá trochu prostoru kolem textu */
+  position: fixed;
+  /* Umožní, aby div zůstal vlevo nahoře, i když uživatel posouvá stránku */
+  top: 1;
+  /* Horní okraj divu bude na horním okraji viewportu */
+  left: 0;
+  /* Levý okraj divu bude na levém okraji viewportu */
+  display: inline-block;
+  /* Udrží velikost divu podle obsahu */
+  z-index: 1000;
+  /* Zajistí, že div bude na vrchu ostatních prvků stránky */
+  color: white;
+  /* Barva textu */
+  font-size: 30px;
+  /* Zvětší velikost fontu */
+  padding: 10px;
+  /* Přidá trochu prostoru kolem textu */
 }
 
 .zpet {
@@ -71,6 +80,7 @@ p {
   color: white;
   /* Nastaví barvu textu */
   /* Další styly pro text podle potřeby */
+  cursor: default;
 }
 
 /* Kontejner pro odpovědi */
@@ -103,9 +113,20 @@ p {
 .odpovedC_tvar,
 .odpovedD_tvar {
   width: 100%;
-  /* Obrázky se přizpůsobí kontejneru */
   height: auto;
+  /* Přidává plynulý přechod pro box-shadow */
+  z-index: 1;
 }
+
+.odpovedA_tvar:hover,
+.odpovedB_tvar:hover,
+.odpovedC_tvar:hover,
+.odpovedD_tvar:hover {
+  /* Příklad žlutého zvýraznění */
+  cursor: pointer;
+  /* Změní kurzor na ukazatel, naznačující klikatelnost */
+}
+
 
 /* Texty odpovědí */
 .text_odpovediA,
@@ -119,8 +140,24 @@ p {
   color: white;
   text-align: center;
   width: 100%;
+  cursor: pointer;
+  z-index: 2;
+  pointer-events: none;
 }
 
 .pomoc {
   display: flex;
+  cursor: pointer;
+}
+
+.lidi,
+.kamos,
+.padenapade {
+  transition: transform 0.3s;
+}
+
+.lidi:hover,
+.kamos:hover,
+.padenapade:hover {
+  transform: scale(1.05);
 }

@@ -87,11 +87,18 @@ function nactiOtazku(uroven) {
                     nastavitOtazkyAOdpovedi(otazkaData, data);
                     // Reset barvy textu a stavu odpovědí
                     for (let i = 0; i < 4; i++) {
-                        const odpovedElem = document.getElementById('text_odpovedi' + String.fromCharCode(65 + i));
-                        if (odpovedElem) {
-                            odpovedElem.style.color = 'white'; // Reset barvy textu na bílou
-                            odpovedElem.style.opacity = '1'; // Obnovíme plnou viditelnost
-                            odpovedElem.style.pointerEvents = 'auto'; // Znovu povolíme klikání
+                        const odpovedElemText = document.getElementById('text_odpovedi' + String.fromCharCode(65 + i));
+                        const odpovedElemObrazek = document.getElementById('odpoved' + String.fromCharCode(65 + i) + '_tvar');
+
+                        if (odpovedElemText) {
+                            odpovedElemText.style.opacity = '1'; // Obnovíme plnou viditelnost
+                            odpovedElemText.style.pointerEvents = 'auto'; // Znovu povolíme klikání
+                            odpovedElemText.style.color = 'white'; // Reset barvy textu na bílou
+                        }
+
+                        if (odpovedElemObrazek) {
+                            odpovedElemObrazek.style.opacity = '1'; // Obnovíme plnou viditelnost obrázku
+                            odpovedElemObrazek.style.pointerEvents = 'auto'; // Znovu povolíme klikání na obrázek
                         }
                     }
                     // Nastavit text otázky a odpovědí
@@ -108,7 +115,6 @@ function nactiOtazku(uroven) {
                                     window.location.href = "vyhra_hry.html"
                                 }
                             } else {
-                                alert("Bohužel, to nebyla správná odpověď. Hra skončila.");
                                 ukoncitHru();
                             }
                         };
@@ -181,9 +187,17 @@ function padenapade() {
 
                 // Projdeme všechny možnosti a zatmavíme dvě špatné odpovědi
                 zatmaveneIndexy.forEach(index => {
-                    const elementOdpovedi = document.getElementById('text_odpovedi' + String.fromCharCode(65 + index));
-                    elementOdpovedi.style.opacity = '0.5';
-                    elementOdpovedi.style.pointerEvents = 'none'; // Zabráníme klikání na zatmavené odpovědi
+                    const elementOdpovediText = document.getElementById('text_odpovedi' + String.fromCharCode(65 + index));
+                    const elementOdpovediObrazek = document.getElementById('odpoved' + String.fromCharCode(65 + index) + '_tvar'); // Doplněno pro obrázky
+
+                    if (elementOdpovediText) {
+                        elementOdpovediText.style.opacity = '0.5';
+                        elementOdpovediText.style.pointerEvents = 'none'; // Zabráníme klikání na zatmavené odpovědi (text)
+                    }
+
+                    if (elementOdpovediObrazek) {
+                        elementOdpovediObrazek.style.pointerEvents = 'none'; // Zabráníme klikání na zatmavené odpovědi (obrázek)
+                    }
                 });
 
                 // Vizuální deaktivace tlačítka
