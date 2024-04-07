@@ -1,12 +1,10 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     const score = parseInt(localStorage.getItem('score')) || 0;
     const levelUnlocked = parseInt(localStorage.getItem('levelUnlocked')) || 1;
 
-    // Kontrola, zda je skóre alespoň 950 a úroveň 3 odemčena
     if (score < 950 || levelUnlocked < 3) {
-        alert('Pro hraní úrovně 3 je potřeba dosáhnout skóre alespoň 950 a mít úroveň odemčenou.');
-        window.location.href = 'Zemepisne-pexeso-uroven2.html'; // Upravte dle potřeby
+        alert('Pro hraní úrovně 3 je potřeba dosáhnout skóre alespoň 950.');
+        window.location.href = 'uroven1.html'; // Přesměrujte na úvodní stránku nebo úroveň 1
         return;
     }
 

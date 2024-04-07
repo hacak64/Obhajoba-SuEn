@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.insertBefore(scoreBoard, gameBoard);
 
     const states = [
-        { name: "Česko", flag: "czech_flag.svg" },
+        { name: "Česko", flag: "czech_flag1.svg" },
         { name: "Slovensko", flag: "slovakia_flag.svg" },
         { name: "Maďarsko", flag: "hungary_flag.svg" },
         { name: "Rakousko", flag: "austria_flag.svg" },
