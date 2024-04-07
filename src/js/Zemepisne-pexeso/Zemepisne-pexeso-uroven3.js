@@ -1,12 +1,22 @@
+
 document.addEventListener('DOMContentLoaded', () => {
+    const score = parseInt(localStorage.getItem('score')) || 0;
+    const levelUnlocked = parseInt(localStorage.getItem('levelUnlocked')) || 1;
+
+    // Kontrola, zda je skóre alespoň 950 a úroveň 3 odemčena
+    if (score < 950 || levelUnlocked < 3) {
+        alert('Pro hraní úrovně 3 je potřeba dosáhnout skóre alespoň 950 a mít úroveň odemčenou.');
+        window.location.href = 'Zemepisne-pexeso-uroven2.html'; // Upravte dle potřeby
+        return;
+    }
+
     const gameBoard = document.getElementById('game-board');
-    let score = 0;
     let cardsFlipped = [];
     let isWaiting = false;
 
     const scoreBoard = document.createElement('div');
     scoreBoard.className = 'score-board';
-    scoreBoard.textContent = 'Skóre: 0';
+    scoreBoard.textContent = 'Skóre: ' + score;
     document.body.insertBefore(scoreBoard, gameBoard);
 
     const states = [
@@ -22,10 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "Belgie", flag: "belgium_flag.svg" },
         { name: "Velká Británie", flag: "uk_flag.svg" },
         { name: "Švýcarsko", flag: "switzerland_flag.svg" }
-        
+    
     ];
 
     const cardSet = [...states.map(state => ({ ...state, type: 'name' })), ...states.map(state => ({ ...state, type: 'flag' }))].sort(() => 0.5 - Math.random());
+
+    gameBoard.innerHTML = ''; // Vyčištění herního pole
 
     cardSet.forEach((item, index) => {
         const card = document.createElement('div');
@@ -64,7 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function checkForMatch() {
         isWaiting = true;
-
         setTimeout(() => {
             const [firstCard, secondCard] = cardsFlipped;
 
@@ -84,11 +95,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (document.querySelectorAll('.card:not(.matched)').length === 0) {
                 alert('Gratulace! Vyhráli jste hru!');
+                // Zde můžete přidat logiku pro konec hry nebo další úrovně, pokud jsou dostupné
             }
         }, 1000);
     }
 
     function updateScore() {
         scoreBoard.textContent = 'Skóre: ' + score;
+        localStorage.setItem('score', score.toString());
     }
 });

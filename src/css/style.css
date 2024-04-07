@@ -8,23 +8,23 @@ body {
 #Zemepisne-pexeso {
   max-width: 100%;
   max-height: 100%;
-  height: auto;
+  height: 370px;
   width: auto;
-  margin-top: 60px;
-  margin-left: 350px;
+  margin-top: 90px;
+  margin-left: 300px;
+  justify-content: center;
   transition: transform 0.3s;
-  justify-content: flex-start;
 }
 
 #Milionar {
   max-width: 100%;
   max-height: 100%;
-  height: auto;
+  height: 300px;
   width: auto;
-  margin-top: 120px;
-  margin-left: 850px;
-  justify-content: center;
+  margin-top: 60px;
+  margin-left: 1050px;
   transition: transform 0.3s;
+  justify-content: flex-start;
 }
 
 #Zemepisne-pexeso:hover,
