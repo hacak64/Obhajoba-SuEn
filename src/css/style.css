@@ -1,5 +1,5 @@
 body {
-  background: url("../../obrazce/pozadi.svg") no-repeat center center fixed;
+  background: url("/obrazce/pexeso/Pozadi.svg");
   background-size: cover;
   margin: 0;
   padding: 0;
@@ -56,6 +56,7 @@ body {
 
 .logo {
   margin-top: 20px;
+  
   display: flex;
   justify-content: center;
   align-items: center;
