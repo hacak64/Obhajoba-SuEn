@@ -123,14 +123,14 @@
                     "spravna_odpoved": "Charles Darwin"
                 },
                 {
-                    "otazka": "Který element má nejvyšší bod varu?",
+                    "otazka": "Jak se jmenuje hlavní postava v knížce Hobbit",
                     "moznosti": [
-                        "Vodík",
-                        "Oxid uhelnatý",
-                        "Železo",
-                        "Wolfram"
+                        "Bilbo Sáček",
+                        "Thorin Pavéza",
+                        "Bilbo Pytlík",
+                        "Frodo Pytlík"
                     ],
-                    "spravna_odpoved": "Wolfram"
+                    "spravna_odpoved": "Bilbo Pytlík"
                 },
                 {
                     "otazka": "Jaké škole patří příjezdová cesta vedle Purkyňky?",
