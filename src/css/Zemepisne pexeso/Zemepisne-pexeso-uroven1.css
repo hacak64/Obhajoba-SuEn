@@ -11,83 +11,83 @@ body, html {
 .score-board {
     margin: 20px;
     font-family: Arial, sans-serif;
-    font-size: 24px;
+    font-size: 24px;¨
+    background: (/obrazce/pexeso/Karta.svg);
 }
 
 .game-board {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 6 sloupců */
+    grid-template-columns: repeat(4, 1fr); /* 4 sloupce */
     gap: 10px; /* mezery mezi kartami */
-    max-width: 90vw;
-    margin: auto;
+    width: 90vw; /* šířka herní plochy jako 90% z viewport width */
+    max-width: 600px; /* maximální šířka herní plochy */
+    margin: 20px auto; /* zarovnání herní plochy na střed s vertikálním okrajem */
 }
 
 .card {
     cursor: pointer;
     perspective: 1000px;
+    width: 100%; /* šířka karty dynamicky odpovídá grid kontejneru */
+    padding-top: 100%; /* výška karty stejná jako šířka pro zachování poměru stran 1:1 */
     position: relative;
-    width: 200px; /* Nastavte podle vašeho designu */
-    height: 200px; /* Nastavte podle vašeho designu */
-    border-radius: 15%;
+    border-radius: 15%; /* mírné zaoblení rohů */
+    background-color: #35302c;
+    overflow: hidden; /* skrytí přetečení, které by mohlo způsobit nežádoucí efekty */
 }
 
 .card-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    transition: transform 0.6s;
     transform-style: preserve-3d;
-    position: relative;
+    transition: transform 0.6s;
+    transform: rotateY(0deg); /* inicializace transformace pro přední a zadní stranu */
 }
 
 .card.flipped .card-inner {
-    transform: rotateY(180deg);
+    transform: rotateY(180deg); /* otočení karty o 180 stupňů na kliknutí */
 }
 
 .card-front, .card-back {
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px; /* Pro zobrazení textu, upravte podle potřeby */
-    border-radius: 15%;
+    backface-visibility: hidden; /* skrytí zadní/přední strany karty, když je otočena */
 }
 
 .card-front {
-    min-height: 200px;
-    min-width: 200px;
-    background-image: url('/obrazce/pexeso/Karta.svg'); /* Upravte cestu podle vašeho umístění souboru */
-    background-size: cover;
+    background-image: url('/obrazce/pexeso/Karta.svg'); /* náhledový obrázek karty */
+    background-size: cover; /* pokrytí celé plochy karty */
+    background-position: center; /* centrování obrázku */
 }
 
-   
 .card-back {
-    background-color: rgba(225, 169, 169, 0.782);
-    transform: rotateY(180deg);
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 10%; /* Ohraničení kolem vlajky, upravte podle potřeby */
-    box-sizing: border-box; /* Zahrnutí paddingu do celkové velikosti */
-    border-radius: 15% ; /* Zaoblení rohů karty */
+    justify-content: center;
+    background-color: #dfbf9f; /* bílé pozadí pro lepší kontrast obrázku */
 }
 
 .card-back img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Zajistí, že celý obrázek vlajky bude vidět */
+    width: 80%; /* šířka obrázku vlajky */
+    height: auto; /* auto výška pro zachování poměru stran obrázku */
+    object-fit: contain; /* obsah obrázku bude celý vidět a nepřeteče */
 }
-    
 
 .matched {
     cursor: default;
-    opacity: 0.5;
+    opacity: 0.4; /* průhlednost spárovaných karet */
 }
 
+@media (max-width: 600px) {
+    .game-board {
+        grid-template-columns: repeat(2, 1fr); /* 2 sloupce v režimu menších obrazovek */
+        gap: 5px; /* menší mezery mezi kartami */
+    }
+
+    .card {
+        margin: 5px; /* okraj kolem karet pro lepší manipulaci na menších obrazovkách */
+    }
+}
