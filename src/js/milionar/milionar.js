@@ -1,13 +1,8 @@
 // Globální proměnná pro uchování aktuální úrovně
 let aktualniUroven = 1;
-let penize = 100;
 let pouziti_kamos = true;
 let pouziti_padenapade = true;
 let pouziti_lidi = true;
-let aktualniOtazkaData = null; // Globální proměnná pro uchování dat aktuální otázky
-let otazky_moznosti = null;
-
-
 
 document.addEventListener('DOMContentLoaded', function () {
     nactiOtazku(aktualniUroven);
@@ -15,22 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
     padenapade()
     lidi()
 });
-
-function vyhodnotitOdpoved(otazkaData, indexOdpovedi, data) {
-    const vybranaOdpoved = otazkaData.moznosti[indexOdpovedi];
-    if (vybranaOdpoved === otazkaData.spravna_odpoved) {
-        aktualniUroven++;
-        if (aktualniUroven <= data.urovne.length) {
-            nactiOtazku(aktualniUroven); // Načte další otázku, pokud existuje
-        } else {
-            // Pokud už neexistují další otázky, uživatel vyhrál hru
-            window.location.href = "vyhra_hry.html"; // Přesměrování na stránku s výhrou
-        }
-    } else {
-        ukoncitHru(); // Volání funkce pro ukončení hry
-    }
-}
-
 function nastavitAktualniHodnoty(data) {
     if (data.urovne && data.urovne[aktualniUroven - 1]) {
         const urovenData = data.urovne[aktualniUroven - 1];
@@ -55,6 +34,24 @@ function nastavitAktualniHodnoty(data) {
         console.error('Úroveň neexistuje v databázi nebo chyba ve struktuře dat.');
     }
 }
+
+function vyhodnotitOdpoved(otazkaData, indexOdpovedi, data) {
+    const vybranaOdpoved = otazkaData.moznosti[indexOdpovedi];
+    if (vybranaOdpoved === otazkaData.spravna_odpoved) {
+        aktualniUroven++;
+        if (aktualniUroven <= data.urovne.length) {
+            nactiOtazku(aktualniUroven); // Načte další otázku, pokud existuje
+        } else {
+            // Pokud už neexistují další otázky, uživatel vyhrál hru
+            window.location.href = "vyhra_hry.html"; // Přesměrování na stránku s výhrou
+        }
+    } else {
+        ukoncitHru(); // Volání funkce pro ukončení hry
+    }
+}
+
+
+
 function nastavitOtazkyAOdpovedi(otazkaData, data) {
     document.getElementById('text_otazky').innerText = otazkaData.otazka;
 
@@ -78,8 +75,8 @@ function nactiOtazku(uroven) {
         .then(response => response.json())
         .then(data => {
             // Kontrola, zda existuje daná úroveň a má definované otázky
-            if (data.urovne && data.urovne[uroven] && data.urovne[uroven].otazky) {
-                const otazky = data.urovne[uroven].otazky;
+            if (data.urovne && data.urovne[uroven - 1] && data.urovne[uroven - 1].otazky) {
+                const otazky = data.urovne[uroven - 1].otazky;            
                 if (otazky.length > 0) {
                     const otazkaData = otazky[Math.floor(Math.random() * otazky.length)];
                     aktualniOtazkaData = otazkaData; // Aktualizujeme globální proměnnou
