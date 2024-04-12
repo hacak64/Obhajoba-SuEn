@@ -6,88 +6,103 @@ body, html {
     align-items: center;
     height: 100vh;
     background-color: #dfbf9f;
+    user-select: none;
 }
 
 .score-board {
     margin: 20px;
     font-family: Arial, sans-serif;
-    font-size: 24px;¨
-    background: (/obrazce/pexeso/Karta.svg);
+    font-size: 24px;
 }
 
 .game-board {
+    top: 50px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 sloupce */
+    grid-template-columns: repeat(4, 1fr); /* 4 sloupce na široké obrazovce */
     gap: 10px; /* mezery mezi kartami */
-    width: 90vw; /* šířka herní plochy jako 90% z viewport width */
+    width: 90vw; /* šířka herní plochy jako 90% viewportu */
     max-width: 600px; /* maximální šířka herní plochy */
-    margin: 20px auto; /* zarovnání herní plochy na střed s vertikálním okrajem */
+    margin: 20px auto; /* zarovnání herní plochy na střed */
+}
+
+.zpet{
+    height: auto;
+    position: absolute;  /* Absolutní pozicování vůči nejbližšímu relativně pozicovanému předkovi */
+    right: 20px;         /* Odsazení od pravého okraje kontejneru */
+    bottom: 15px;        /* Odsazení od spodního okraje kontejneru */
+    transition: transform 0.3s;
+ 
+}
+.zpet:hover{
+    transform: scale(1.1);
 }
 
 .card {
     cursor: pointer;
     perspective: 1000px;
-    width: 100%; /* šířka karty dynamicky odpovídá grid kontejneru */
-    padding-top: 100%; /* výška karty stejná jako šířka pro zachování poměru stran 1:1 */
+    width: 100%; /* šířka karty odpovídá šířce kontejneru */
+    aspect-ratio: 1 / 1; /* zachování poměru stran 1:1 */
     position: relative;
-    border-radius: 15%; /* mírné zaoblení rohů */
-    background-color: #35302c;
-    overflow: hidden; /* skrytí přetečení, které by mohlo způsobit nežádoucí efekty */
+    border-radius: 15%; /* mírně zaoblené rohy */
+    background-image: url('/obrazce/pexeso/Karta.svg');
+    background-repeat: no-repeat;
+    overflow: hidden;
+
+    
 }
 
 .card-inner {
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
     transition: transform 0.6s;
-    transform: rotateY(0deg); /* inicializace transformace pro přední a zadní stranu */
+    transform: rotateY(180deg); /* výchozí stav, přední strana viditelná */
 }
 
 .card.flipped .card-inner {
-    transform: rotateY(180deg); /* otočení karty o 180 stupňů na kliknutí */
+    transform: rotateY(0deg); /* otočení karty o 180 stupňů */
 }
 
 .card-front, .card-back {
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden; /* skrytí zadní/přední strany karty, když je otočena */
-}
-
-.card-front {
-    background-image: url('/obrazce/pexeso/Karta.svg'); /* náhledový obrázek karty */
-    background-size: cover; /* pokrytí celé plochy karty */
-    background-position: center; /* centrování obrázku */
-}
-
-.card-back {
+    backface-visibility: hidden; /* skrytí opačné strany při otočení */
     display: flex;
-    align-items: center;
     justify-content: center;
-    background-color: #dfbf9f; /* bílé pozadí pro lepší kontrast obrázku */
+    align-items: center;
+}
+/*
+.card-front {
+    min-height: 200px;
+    min-width: 200px;
+    background-image: url('/obrazce/pexeso/Karta.svg');  Upravte cestu podle vašeho umístění souboru 
+    background-size: cover;
+}
+*/
+.card-back {
+    background-color: #BCBCBC; /* bílé pozadí pro lepší kontrast s obrázkem */
 }
 
 .card-back img {
-    width: 80%; /* šířka obrázku vlajky */
-    height: auto; /* auto výška pro zachování poměru stran obrázku */
-    object-fit: contain; /* obsah obrázku bude celý vidět a nepřeteče */
+    width: 90%; /* zmenšení obrázku vlajky, aby nezabíral celou plochu */
+    height: auto;
+    object-fit: contain; /* ujistění, že obrázek bude celý vidět */
 }
 
 .matched {
     cursor: default;
-    opacity: 0.4; /* průhlednost spárovaných karet */
+    opacity: 0.4; /* ztmavení spárovaných karet */
 }
 
 @media (max-width: 600px) {
     .game-board {
-        grid-template-columns: repeat(2, 1fr); /* 2 sloupce v režimu menších obrazovek */
+        grid-template-columns: repeat(2, 1fr); /* pouze 2 sloupce pro úsporu místa */
         gap: 5px; /* menší mezery mezi kartami */
     }
 
     .card {
-        margin: 5px; /* okraj kolem karet pro lepší manipulaci na menších obrazovkách */
+        margin: 5px; /* dodatečný okraj pro lepší manipulaci */
     }
 }

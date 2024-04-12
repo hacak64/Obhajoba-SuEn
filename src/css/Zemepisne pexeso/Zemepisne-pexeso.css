@@ -1,8 +1,9 @@
 body {
-    background: url("/obrazce/pexeso/Pozadi.svg");
+    background: url("/obrazce/milionar/pozadi.svg");
     background-size: cover;
     margin: 0;
     padding: 0;
+    user-select: none;
   }
 
 
@@ -10,7 +11,55 @@ body {
     top: 0;
     left: 0;
 }
-.zpet{
-  right: 0;
-  bottom: 0;
+
+.tlacitka-menu {
+  top: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.uroven1 {
+  height: auto;
+  top: 10%;
+  left: 0;
+  transition: transform 0.3s;
+}
+
+.uroven2 {
+  height: auto;
+  top: 10%;
+  left: 0;
+  transition: transform 0.3s;
+}
+
+.uroven3 {
+  height: auto;
+  top: 10%;
+  left: 0;
+  transition: transform 0.3s;
+}
+
+.pravidla {
+  height: auto;
+  top: 10%;
+  left: 0;
+  transition: transform 0.3s;
+}
+
+.zpet {
+  height: auto;
+  position: absolute;  /* Absolutní pozicování vůči nejbližšímu relativně pozicovanému předkovi */
+  right: 20px;         /* Odsazení od pravého okraje kontejneru */
+  bottom: 15px;        /* Odsazení od spodního okraje kontejneru */
+  transition: transform 0.3s;
+}
+
+.uroven1:hover,
+.uroven2:hover,
+.uroven3:hover,
+.zpet:hover,
+.pravidla:hover {
+  transform: scale(1.1);
 }

@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (score < 950 || levelUnlocked < 3) {
         alert('Pro hraní úrovně 3 je potřeba dosáhnout skóre alespoň 950.');
-        window.location.href = 'uroven1.html'; // Přesměrujte na úvodní stránku nebo úroveň 1
+        window.location.href = 'Zemepisne-pexeso-uroven2.html'; // Přesměrujte na úvodní stránku nebo úroveň 1
         return;
     }
 
