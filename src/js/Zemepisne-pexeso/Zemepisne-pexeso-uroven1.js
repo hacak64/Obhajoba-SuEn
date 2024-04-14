@@ -1,14 +1,14 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     const gameBoard = document.getElementById('game-board');
-    let score = parseInt(localStorage.getItem('score')) || 0;
+    let currentScore = parseInt(localStorage.getItem('currentScoreLevel1')) || 0;
+    let totalScore = parseInt(localStorage.getItem('totalScore')) || currentScore;
     let levelUnlocked = parseInt(localStorage.getItem('levelUnlocked')) || 1;
     let cardsFlipped = [];
     let isWaiting = false;
 
     const scoreBoard = document.createElement('div');
     scoreBoard.className = 'score-board';
-    scoreBoard.textContent = 'Skóre: ' + score;
+    scoreBoard.textContent = 'Skóre: ' + currentScore;
     document.body.insertBefore(scoreBoard, gameBoard);
 
     const states = [
@@ -24,9 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const cardSet = [...states.map(state => ({ ...state, type: 'name' })), ...states.map(state => ({ ...state, type: 'flag' }))].sort(() => 0.5 - Math.random());
 
-    gameBoard.innerHTML = ''; // Vyčistění herního pole
+    gameBoard.innerHTML = '';
 
-    cardSet.forEach((item, index) => {
+    cardSet.forEach((item) => {
         const card = document.createElement('div');
         card.className = 'card';
         card.dataset.name = item.name;
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const cardBack = document.createElement('div');
         cardBack.className = 'card-back';
         if (item.type === 'flag') {
-            cardBack.innerHTML = `<img src="/obrazce/pexeso/vlajky/${item.flag}" alt="${item.name}" style="width: 100%; height: auto;">`;
+            cardBack.innerHTML = `<img src="images/${item.flag}" alt="${item.name}" style="width: 100%; height: auto;">`;
         } else {
             cardBack.textContent = item.name;
         }
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         gameBoard.appendChild(card);
 
         card.addEventListener('click', () => {
-            if (isWaiting || card.classList.contains('flipped')) return;
+            if (isWaiting || cardsFlipped.length === 2 || card.classList.contains('flipped')) return;
             card.classList.add('flipped');
             cardsFlipped.push(card);
 
@@ -62,33 +62,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function checkForMatch() {
+        if (cardsFlipped.length < 2) return;
         isWaiting = true;
+
         setTimeout(() => {
             const [firstCard, secondCard] = cardsFlipped;
-            let matchScore = 50; // Bodová hodnota za správnou dvojici
-            let mismatchPenalty = -10; // Penalizace za nesprávnou dvojici
 
             if (firstCard.dataset.name === secondCard.dataset.name) {
                 firstCard.classList.add('matched');
                 secondCard.classList.add('matched');
-                score += matchScore;
+                currentScore += 50;
+                totalScore += 50;
             } else {
                 firstCard.classList.remove('flipped');
                 secondCard.classList.remove('flipped');
-                score += mismatchPenalty;
+                if (currentScore > 0) {
+                    currentScore -= 10;
+                    totalScore -= 10;
+                }
             }
 
             updateScore();
             cardsFlipped = [];
             isWaiting = false;
 
-            // Zkontrolujte, zda všechny karty byly otočeny
             if (document.querySelectorAll('.card:not(.matched)').length === 0) {
-                // Pokud ano, zkontrolujte, zda je dosaženo skóre pro odemknutí další úrovně
-                if (score >= 300 && levelUnlocked === 1) {
+                if (currentScore >= 300 && levelUnlocked === 1) {
                     levelUnlocked = 2;
-                    localStorage.setItem('levelUnlocked', levelUnlocked.toString());
-                    // Zde byste mohli přesměrovat hráče na úroveň 2 nebo zobrazit zprávu s instrukcemi, jak pokračovat
+                    localStorage.setItem('levelUnlocked', '2');
                     alert('Gratulace! Odemkli jste úroveň 2!');
                 }
             }
@@ -96,7 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateScore() {
-        scoreBoard.textContent = 'Skóre: ' + score;
-        localStorage.setItem('score', score.toString());
+        scoreBoard.textContent = 'Skóre: ' + currentScore;
+        localStorage.setItem('currentScoreLevel1', currentScore.toString());
+        localStorage.setItem('totalScore', totalScore.toString());
     }
 });

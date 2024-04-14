@@ -1,24 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const score = parseInt(localStorage.getItem('score')) || 0;
-    const levelUnlocked = parseInt(localStorage.getItem('levelUnlocked')) || 1;
-
-    if (score < 950 || levelUnlocked < 3) {
-        alert('Pro hraní úrovně 3 je potřeba dosáhnout skóre alespoň 950.');
-        window.location.href = 'Zemepisne-pexeso-uroven2.html'; // Přesměrujte na úvodní stránku nebo úroveň 1
-        return;
-    }
-
     const gameBoard = document.getElementById('game-board');
+    let currentScore = parseInt(localStorage.getItem('currentScoreLevel3')) || 0;
+    let totalScore = parseInt(localStorage.getItem('totalScore')) || currentScore;
+    let levelUnlocked = parseInt(localStorage.getItem('levelUnlocked')) || 1;
     let cardsFlipped = [];
     let isWaiting = false;
 
+    if (levelUnlocked < 3) {
+        alert('Pro hraní úrovně 3 je potřeba nejdříve odemknout tuto úroveň.');
+        window.location.href = 'Zemepisne-pexeso-uroven2.html'; // Upravte podle vaší struktury souborů
+        return;
+    }
+
     const scoreBoard = document.createElement('div');
     scoreBoard.className = 'score-board';
-    scoreBoard.textContent = 'Skóre: ' + score;
+    scoreBoard.textContent = 'Aktuální skóre: ' + currentScore;
     document.body.insertBefore(scoreBoard, gameBoard);
 
     const states = [
-        { name: "Česko", flag: "czech_flag.svg" },
+        { name: "Česko", flag: "czech_flag1.svg" },
         { name: "Slovensko", flag: "slovakia_flag.svg" },
         { name: "Maďarsko", flag: "hungary_flag.svg" },
         { name: "Rakousko", flag: "austria_flag.svg" },
@@ -30,14 +30,13 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "Belgie", flag: "belgium_flag.svg" },
         { name: "Velká Británie", flag: "uk_flag.svg" },
         { name: "Švýcarsko", flag: "switzerland_flag.svg" }
-    
     ];
 
     const cardSet = [...states.map(state => ({ ...state, type: 'name' })), ...states.map(state => ({ ...state, type: 'flag' }))].sort(() => 0.5 - Math.random());
 
-    gameBoard.innerHTML = ''; // Vyčištění herního pole
+    gameBoard.innerHTML = '';
 
-    cardSet.forEach((item, index) => {
+    cardSet.forEach((item) => {
         const card = document.createElement('div');
         card.className = 'card';
         card.dataset.name = item.name;
@@ -51,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const cardBack = document.createElement('div');
         cardBack.className = 'card-back';
         if (item.type === 'flag') {
-            cardBack.innerHTML = `<img src="flags/${item.flag}" alt="${item.name}" style="width: 100%; height: auto;">`;
+            cardBack.innerHTML = `<img src="/obrazce/pexeso/vlajky/${item.flag}" alt="${item.name}">`;
         } else {
             cardBack.textContent = item.name;
         }
@@ -62,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         gameBoard.appendChild(card);
 
         card.addEventListener('click', () => {
-            if (isWaiting || card.classList.contains('flipped')) return;
+            if (isWaiting || card.classList.contains('flipped') || card.classList.contains('matched')) return;
             card.classList.add('flipped');
             cardsFlipped.push(card);
 
@@ -73,18 +72,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function checkForMatch() {
+        if (cardsFlipped.length < 2) {
+            return;
+        }
+
         isWaiting = true;
+
         setTimeout(() => {
             const [firstCard, secondCard] = cardsFlipped;
 
             if (firstCard.dataset.name === secondCard.dataset.name) {
                 firstCard.classList.add('matched');
                 secondCard.classList.add('matched');
-                score += 50;
+                currentScore += 50;
+                totalScore += 50;  // Přidání bodů do celkového skóre
             } else {
                 firstCard.classList.remove('flipped');
                 secondCard.classList.remove('flipped');
-                score -= 10;
+                if (currentScore > 0) {
+                    currentScore -= 10;
+                    totalScore -= 10;  // Odebrání bodů z celkového skóre, pokud není nula
+                }
             }
 
             updateScore();
@@ -92,14 +100,16 @@ document.addEventListener('DOMContentLoaded', () => {
             isWaiting = false;
 
             if (document.querySelectorAll('.card:not(.matched)').length === 0) {
-                alert('Gratulace! Vyhráli jste hru!');
-                // Zde můžete přidat logiku pro konec hry nebo další úrovně, pokud jsou dostupné
+                alert('Gratulace! Vyhráli jste hru! Vaše skóre: ' + currentScore);
+                localStorage.setItem('currentScoreLevel3', '0');  // Reset skóre pro úroveň 3 po výhře
+                // Přidání logiky pro konec hry nebo přechod na další úroveň
             }
         }, 1000);
     }
 
     function updateScore() {
-        scoreBoard.textContent = 'Skóre: ' + score;
-        localStorage.setItem('score', score.toString());
+        scoreBoard.textContent = 'Aktuální skóre: ' + currentScore;
+        localStorage.setItem('currentScoreLevel3', currentScore.toString());
+        localStorage.setItem('totalScore', totalScore.toString());  // Uložení celkového skóre
     }
 });
