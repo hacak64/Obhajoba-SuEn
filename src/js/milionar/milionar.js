@@ -105,7 +105,7 @@ function nactiOtazku(uroven) {
                         odpovedElem.innerText = otazkaData.moznosti[i];
                         odpovedElem.onclick = () => {
                             if (otazkaData.moznosti[i] === otazkaData.spravna_odpoved) {
-                                if (aktualniUroven < data.urovne.length - 1) {
+                                if (aktualniUroven < data.urovne.length) {
                                     aktualniUroven++;
                                     nactiOtazku(aktualniUroven);
                                 } else {
@@ -220,7 +220,7 @@ function lidi() {
         // Generujeme náhodná procenta a ujistíme se, že součet je 100
         let procenta = [];
         for (let i = 0; i < 3; i++) {
-            let cislo = Math.floor(Math.random() * 35) + 1; // Zajistíme, že každá hodnota bude alespoň 1% a maximálně 25%
+            let cislo = Math.floor(Math.random() * 30) + 3; // Zajistíme, že každá hodnota bude alespoň 1% a maximálně 30%
             procenta.push(cislo);
         }
         let soucetProcent = procenta.reduce((a, b) => a + b, 0);
@@ -251,9 +251,7 @@ function lidi() {
 
 
 function ukoncitHru() {
-    // Zde můžete přidat jakoukoliv logiku pro ukončení hry
-    // Například: Skrytí herní oblasti, zobrazení zprávy o konečném skóre, atd.
-
+    spenize = ["0","100","200","300","500","1 000","2 000","4 000","8 000","16 000","32 000","64 000", "125 000", "250 000", "500 000", "1 000 000" ]
     // Deaktivace všech tlačítek odpovědí
     for (let i = 0; i < 4; i++) { // Předpokládáme, že máte 4 možnosti odpovědí
         const odpovedElem = document.getElementById('text_odpovedi' + String.fromCharCode(65 + i));
@@ -262,9 +260,9 @@ function ukoncitHru() {
             odpovedElem.style.opacity = '0.5';
         }
     }
-
+    predeslauroven = aktualniUroven - 1;
+    predeslepenize = spenize[predeslauroven];
     // Přesměrování na stránku 'konec_hry.html'
-    window.location.href = 'konec_hry.html?score=' + aktualniUroven + '&money=' + penize
+    window.location.href = 'konec_hry.html?score=' + predeslauroven  + '&money=' + predeslepenize
 
 }
-
