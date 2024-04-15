@@ -1,5 +1,5 @@
 body {
-    background: url("/obrazce/milionar/pozadi.svg");
+    background: url("/obrazce/pexeso/pozadi-blue.svg");
     background-size: cover;
     margin: 0;
     padding: 0;
@@ -67,17 +67,15 @@ body {
   transform: scale(1.1);
 }
 
-.total-score{
+
+
+
+.total-score {
   position: absolute;
-  top: 20px;
-  right: 70px;
-  font-style: arial;
+  font-size: 42px;
+  top: 0;
+  right: 2%;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
   color: #BCBCBC;
-}
-#total-score{
-    font-weight: bold;
-    font-size: 52px;
-    position: absolute;
-    top: 8px;
-    right: 0px;
 }
