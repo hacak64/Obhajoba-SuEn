@@ -10,13 +10,23 @@ body, html {
 }
 
 .score-board {
+    position: absolute;
+    right: 20px;
     margin: 20px;
     font-family: Arial, sans-serif;
     font-size: 24px;
 }
 
+#Uroven1{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+
 .game-board {
-    top: 50px;
+    position: absolute;
+    top: 10%;
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 4 sloupce na široké obrazovce */
     gap: 10px; /* mezery mezi kartami */

@@ -13,7 +13,10 @@ body {
 }
 
 .tlacitka-menu {
-  top: 0px;
+  position: absolute;
+  align-self: center;
+  left: 40%;
+  top: 35%;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -18,10 +18,10 @@ body, html {
 .game-board {
     top: 50px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 sloupce na široké obrazovce */
+    grid-template-columns: repeat(6, 1fr); /* 4 sloupce na široké obrazovce */
     gap: 10px; /* mezery mezi kartami */
     width: 90vw; /* šířka herní plochy jako 90% viewportu */
-    max-width: 600px; /* maximální šířka herní plochy */
+    max-width: 900px; /* maximální šířka herní plochy */
     margin: 20px auto; /* zarovnání herní plochy na střed */
 }
 
