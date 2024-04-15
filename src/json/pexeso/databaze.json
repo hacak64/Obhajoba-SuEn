@@ -1,0 +1,40 @@
+{
+    "level1": [
+        { "name": "Česko", "flag": "czech_flag.svg" },
+        { "name": "Slovensko", "flag": "slovakia_flag.svg" },
+        { "name": "Maďarsko", "flag": "hungary_flag.svg" },
+        { "name": "Rakousko", "flag": "austria_flag.svg" },
+        { "name": "Německo", "flag": "germany_flag.svg" },
+        { "name": "Polsko", "flag": "poland_flag.svg" },
+        { "name": "Itálie", "flag": "italy_flag.svg" },
+        { "name": "Chorvatsko", "flag": "croatia_flag.svg" }
+    ],
+    "level2": [
+        { "name": "Česko", "flag": "czech_flag.svg" },
+        { "name": "Slovensko", "flag": "slovakia_flag.svg" },
+        { "name": "Maďarsko", "flag": "hungary_flag.svg" },
+        { "name": "Rakousko", "flag": "austria_flag.svg" },
+        { "name": "Německo", "flag": "germany_flag.svg" },
+        { "name": "Polsko", "flag": "poland_flag.svg" },
+        { "name": "Itálie", "flag": "italy_flag.svg" },
+        { "name": "Chorvatsko", "flag": "croatia_flag.svg" },
+        { "name": "Francie", "flag": "france_flag.svg" },
+        { "name": "Belgie", "flag": "belgium_flag.svg" },
+        { "name": "Velká Británie", "flag": "uk_flag.svg" },
+        { "name": "Švýcarsko", "flag": "switzerland_flag.svg" }
+    ],
+    "level3": [
+        { "name": "Česko", "flag": "czech_flag.svg" },
+        { "name": "Slovensko", "flag": "slovakia_flag.svg" },
+        { "name": "Maďarsko", "flag": "hungary_flag.svg" },
+        { "name": "Rakousko", "flag": "austria_flag.svg" },
+        { "name": "Německo", "flag": "germany_flag.svg" },
+        { "name": "Polsko", "flag": "poland_flag.svg" },
+        { "name": "Itálie", "flag": "italy_flag.svg" },
+        { "name": "Chorvatsko", "flag": "croatia_flag.svg" },
+        { "name": "Francie", "flag": "france_flag.svg" },
+        { "name": "Belgie", "flag": "belgium_flag.svg" },
+        { "name": "Kambodza", "flag": "uk_flag.svg" },
+        { "name": "Jihoafrická republika", "flag": "switzerland_flag.svg" }
+    ]
+}

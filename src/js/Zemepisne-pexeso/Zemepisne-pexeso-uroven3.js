@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let isWaiting = false;
 
     if (levelUnlocked < 3) {
-        alert('Pro hraní úrovně 3 je potřeba nejdříve odemknout tuto úroveň.');
-        window.location.href = 'Zemepisne-pexeso-uroven2.html'; // Upravte podle vaší struktury souborů
+        alert('Pro hraní úrovně 3 je potřeba nejdříve odehrát úroveň 2 se ziskem minimálně 300 bodů.');
+        window.location.href = 'Zemepisne-pexeso-uroven2.html';
         return;
     }
 
@@ -17,65 +17,54 @@ document.addEventListener('DOMContentLoaded', () => {
     scoreBoard.textContent = 'Aktuální skóre: ' + currentScore;
     document.body.insertBefore(scoreBoard, gameBoard);
 
-    const states = [
-        { name: "Česko", flag: "czech_flag1.svg" },
-        { name: "Slovensko", flag: "slovakia_flag.svg" },
-        { name: "Maďarsko", flag: "hungary_flag.svg" },
-        { name: "Rakousko", flag: "austria_flag.svg" },
-        { name: "Německo", flag: "germany_flag.svg" },
-        { name: "Polsko", flag: "poland_flag.svg" },
-        { name: "Itálie", flag: "italy_flag.svg" },
-        { name: "Chorvatsko", flag: "croatia_flag.svg" },
-        { name: "Francie", flag: "france_flag.svg" },
-        { name: "Belgie", flag: "belgium_flag.svg" },
-        { name: "Velká Británie", flag: "uk_flag.svg" },
-        { name: "Švýcarsko", flag: "switzerland_flag.svg" }
-    ];
+    // Dynamické načítání států a vlajek z JSON souboru
+    fetch('/src/json/pexeso/databaze.json') // Upravte cestu k vašemu JSON souboru
+        .then(response => response.json())
+        .then(data => {
+            const states = data.level3; // Předpokládá, že data jsou strukturovaná jako { level3: [{name, flag}, ...] }
+            const cardSet = [...states.map(state => ({ ...state, type: 'name' })), ...states.map(state => ({ ...state, type: 'flag' }))].sort(() => Math.random() - 0.5);
 
-    const cardSet = [...states.map(state => ({ ...state, type: 'name' })), ...states.map(state => ({ ...state, type: 'flag' }))].sort(() => 0.5 - Math.random());
+            gameBoard.innerHTML = ''; // Vyčistění herního pole před generováním nových karet
 
-    gameBoard.innerHTML = '';
+            cardSet.forEach((item) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.dataset.name = item.name;
 
-    cardSet.forEach((item) => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.dataset.name = item.name;
+                const cardInner = document.createElement('div');
+                cardInner.className = 'card-inner';
 
-        const cardInner = document.createElement('div');
-        cardInner.className = 'card-inner';
+                const cardFront = document.createElement('div');
+                cardFront.className = 'card-front';
 
-        const cardFront = document.createElement('div');
-        cardFront.className = 'card-front';
+                const cardBack = document.createElement('div');
+                cardBack.className = 'card-back';
+                if (item.type === 'flag') {
+                    cardBack.innerHTML = `<img src="/obrazce/pexeso/vlajky/${item.flag}" alt="${item.name}">`;
+                } else {
+                    cardBack.textContent = item.name;
+                }
 
-        const cardBack = document.createElement('div');
-        cardBack.className = 'card-back';
-        if (item.type === 'flag') {
-            cardBack.innerHTML = `<img src="/obrazce/pexeso/vlajky/${item.flag}" alt="${item.name}">`;
-        } else {
-            cardBack.textContent = item.name;
-        }
+                cardInner.appendChild(cardFront);
+                cardInner.appendChild(cardBack);
+                card.appendChild(cardInner);
+                gameBoard.appendChild(card);
 
-        cardInner.appendChild(cardFront);
-        cardInner.appendChild(cardBack);
-        card.appendChild(cardInner);
-        gameBoard.appendChild(card);
+                card.addEventListener('click', () => {
+                    if (isWaiting || cardsFlipped.length === 2 || card.classList.contains('flipped')) return;
+                    card.classList.add('flipped');
+                    cardsFlipped.push(card);
 
-        card.addEventListener('click', () => {
-            if (isWaiting || card.classList.contains('flipped') || card.classList.contains('matched')) return;
-            card.classList.add('flipped');
-            cardsFlipped.push(card);
-
-            if (cardsFlipped.length === 2) {
-                checkForMatch();
-            }
-        });
-    });
+                    if (cardsFlipped.length === 2) {
+                        checkForMatch();
+                    }
+                });
+            });
+        })
+        .catch(error => console.error('Failed to load states data:', error));
 
     function checkForMatch() {
-        if (cardsFlipped.length < 2) {
-            return;
-        }
-
+        if (cardsFlipped.length < 2) return;
         isWaiting = true;
 
         setTimeout(() => {
@@ -85,13 +74,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 firstCard.classList.add('matched');
                 secondCard.classList.add('matched');
                 currentScore += 50;
-                totalScore += 50;  // Přidání bodů do celkového skóre
+                totalScore += 50;
             } else {
                 firstCard.classList.remove('flipped');
                 secondCard.classList.remove('flipped');
                 if (currentScore > 0) {
                     currentScore -= 10;
-                    totalScore -= 10;  // Odebrání bodů z celkového skóre, pokud není nula
+                    totalScore -= 10;
                 }
             }
 
@@ -101,8 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (document.querySelectorAll('.card:not(.matched)').length === 0) {
                 alert('Gratulace! Vyhráli jste hru! Vaše skóre: ' + currentScore);
-                localStorage.setItem('currentScoreLevel3', '0');  // Reset skóre pro úroveň 3 po výhře
-                // Přidání logiky pro konec hry nebo přechod na další úroveň
+                localStorage.setItem('currentScoreLevel3', '0'); // Reset skóre pro úroveň 3 po výhře
             }
         }, 1000);
     }
@@ -110,6 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateScore() {
         scoreBoard.textContent = 'Aktuální skóre: ' + currentScore;
         localStorage.setItem('currentScoreLevel3', currentScore.toString());
-        localStorage.setItem('totalScore', totalScore.toString());  // Uložení celkového skóre
+        localStorage.setItem('totalScore', totalScore.toString());
     }
 });

@@ -11,20 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
     scoreBoard.textContent = 'Skóre: ' + currentScore;
     document.body.insertBefore(scoreBoard, gameBoard);
 
-    const states = [
-        { name: "Česko", flag: "czech_flag.svg" },
-        { name: "Slovensko", flag: "slovakia_flag.svg" },
-        { name: "Maďarsko", flag: "hungary_flag.svg" },
-        { name: "Rakousko", flag: "austria_flag.svg" },
-        { name: "Německo", flag: "germany_flag.svg" },
-        { name: "Polsko", flag: "poland_flag.svg" },
-        { name: "Itálie", flag: "italy_flag.svg" },
-        { name: "Chorvatsko", flag: "croatia_flag.svg" },
-    ];
-
+    // Dynamické načítání států a vlajek z JSON souboru
+    fetch('/src/json/pexeso/databaze.json')  // Cesta k JSON souboru
+    .then(response => response.json())
+    .then(data => {
+    const states = data.level1;  // Upravte podle potřebné úrovně
     const cardSet = [...states.map(state => ({ ...state, type: 'name' })), ...states.map(state => ({ ...state, type: 'flag' }))].sort(() => 0.5 - Math.random());
 
-    gameBoard.innerHTML = '';
+    gameBoard.innerHTML = '';  // Vyčistění herního pole
 
     cardSet.forEach((item) => {
         const card = document.createElement('div');
@@ -40,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const cardBack = document.createElement('div');
         cardBack.className = 'card-back';
         if (item.type === 'flag') {
-            cardBack.innerHTML = `<img src="images/${item.flag}" alt="${item.name}" style="width: 100%; height: auto;">`;
+            cardBack.innerHTML = `<img src="/obrazce/pexeso/vlajky/${item.flag}" alt="${item.name}" style="width: 100%; height: auto;">`;
         } else {
             cardBack.textContent = item.name;
         }
@@ -101,4 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('currentScoreLevel1', currentScore.toString());
         localStorage.setItem('totalScore', totalScore.toString());
     }
+})
+.catch(error => console.error('Failed to load states data:', error));
 });

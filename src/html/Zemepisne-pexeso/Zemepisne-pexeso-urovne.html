@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pexeso - Vlajky a Země</title>
+  <link rel='stylesheet' href='/src/css/Zemepisne pexeso/Zemepisne-pexeso-urovne.css'>
+</head>
+<body>
+    <div class="hexagon-group">
+        <img src="/obrazce/pexeso/hexagon_group.svg" id="hexagony" alt="hexagon-group"/>
+    </div>
+    <div class="total-score">
+        <img src="/obrazce/pexeso/Celkove-skore.png" class="total-score"> <span id="total-score">0</span>
+    </div>
+    <div class="tlacitka-menu">
+        <a href="Zemepisne-pexeso-uroven1.html"><img src="/obrazce/pexeso/uroven1.svg" alt="Uroven1" class="uroven1"/></a>
+        <a id="link-level-2"><img id="img-level-2" alt="Uroven2" class="uroven1"/></a>
+        <a id="link-level-3"><img id="img-level-3" alt="Uroven3" class="uroven1"/></a>
+    </div>
+    <a href="/src/html/Zemepisne-pexeso/Zemepisne-pexeso.html"><img src="/obrazce/pexeso/pravidla/Logo-zpet.svg" alt="zpět" class="zpet"/></a>
+
+    <script>
+        document.getElementById('total-score').textContent = localStorage.getItem('totalScore') || '0';
+        
+        const levelUnlocked = parseInt(localStorage.getItem('levelUnlocked')) || 1;
+        const imgLevel2 = document.getElementById('img-level-2');
+        const imgLevel3 = document.getElementById('img-level-3');
+        const linkLevel2 = document.getElementById('link-level-2');
+        const linkLevel3 = document.getElementById('link-level-3');
+
+        if (levelUnlocked >= 2) {
+            imgLevel2.src = "/obrazce/pexeso/uroven2.svg";
+            linkLevel2.href = "Zemepisne-pexeso-uroven2.html";
+        } else {
+            imgLevel2.src = "/obrazce/pexeso/uroven2-locked.svg";
+            linkLevel2.removeAttribute('href');
+            imgLevel2.style.cursor = "not-allowed";
+        }
+
+        if (levelUnlocked >= 3) {
+            imgLevel3.src = "/obrazce/pexeso/uroven3.svg";
+            linkLevel3.href = "Zemepisne-pexeso-uroven3.html";
+        } else {
+            imgLevel3.src = "/obrazce/pexeso/uroven3-locked.svg";
+            linkLevel3.removeAttribute('href');
+            imgLevel3.style.cursor = "not-allowed";
+        }
+    </script>
+</body>
+</html>
