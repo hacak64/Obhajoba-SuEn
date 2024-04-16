@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.insertBefore(scoreBoard, gameBoard);
 
     // Dynamické načítání států a vlajek z JSON souboru
-    fetch('/src/json/pexeso/databaze.json') // Upravte cestu k vašemu JSON souboru
+    fetch('../../json/pexeso/databaze.json') // Upravte cestu k vašemu JSON souboru
         .then(response => response.json())
         .then(data => {
             const states = data.level2; // Změna na data pro úroveň 2
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const cardBack = document.createElement('div');
                 cardBack.className = 'card-back';
                 if (item.type === 'flag') {
-                    cardBack.innerHTML = `<img src="/obrazce/pexeso/vlajky/${item.flag}" alt="${item.name}">`;
+                    cardBack.innerHTML = `<img src="../../../obrazce/pexeso/vlajky/${item.flag}" alt="${item.name}">`;
                 } else {
                     cardBack.textContent = item.name;
                 }
