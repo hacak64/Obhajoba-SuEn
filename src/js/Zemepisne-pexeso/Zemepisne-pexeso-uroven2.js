@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
             isWaiting = false;
 
             if (document.querySelectorAll('.card:not(.matched)').length === 0) {
-                alert('Gratulace! Vyhráli jste hru! Vaše skóre: ' + currentScore);
+                alert('Gratulace! Dohráli jste hru a odemkli tak úroveň 3! Vaše dosažené skóre: ' + currentScore);
                 if (levelUnlocked === 2) {
                     localStorage.setItem('levelUnlocked', '3');  // Odemčení úrovně 3
                     localStorage.setItem('currentScoreLevel3', '0');  // Reset skóre pro úroveň 3
