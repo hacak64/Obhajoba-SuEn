@@ -28,18 +28,18 @@ body, html {
     position: absolute;
     top: 10%;
     display: grid;
-    grid-template-columns: repeat(6, 1fr); /* 4 sloupce na široké obrazovce */
-    gap: 10px; /* mezery mezi kartami */
-    width: 90vw; /* šířka herní plochy jako 90% viewportu */
-    max-width: 900px; /* maximální šířka herní plochy */
-    margin: 20px auto; /* zarovnání herní plochy na střed */
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    width: 90vw;
+    max-width: 900px;
+    margin: 20px auto;
 }
 
 .zpet {
     height: auto;
-    position: absolute;  /* Absolutní pozicování vůči nejbližšímu relativně pozicovanému předkovi */
-    right: 2%;         /* Odsazení od pravého okraje kontejneru */
-    bottom: 5%;        /* Odsazení od spodního okraje kontejneru */
+    position: absolute;
+    right: 2%;
+    bottom: 5%;
     transition: transform 0.3s;
 }
 
@@ -50,15 +50,13 @@ body, html {
 .card {
     cursor: pointer;
     perspective: 1000px;
-    width: 100%; /* šířka karty odpovídá šířce kontejneru */
-    aspect-ratio: 1 / 1; /* zachování poměru stran 1:1 */
+    width: 100%; 
+    aspect-ratio: 1 / 1;
     position: relative;
-    border-radius: 15%; /* mírně zaoblené rohy */
+    border-radius: 15%;
     background-image: url('../../../obrazce/pexeso/Karta.svg');
     background-repeat: no-repeat;
     overflow: hidden;
-
-    
 }
 
 .card-inner {
@@ -67,18 +65,18 @@ body, html {
     height: 100%;
     transform-style: preserve-3d;
     transition: transform 0.6s;
-    transform: rotateY(180deg); /* výchozí stav, přední strana viditelná */
+    transform: rotateY(180deg);
 }
 
 .card.flipped .card-inner {
-    transform: rotateY(0deg); /* otočení karty o 180 stupňů */
+    transform: rotateY(0deg);
 }
 
 .card-front, .card-back {
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden; /* skrytí opačné strany při otočení */
+    backface-visibility: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -88,28 +86,28 @@ body, html {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-size: 20px;
-    background-color: #1a1a1a; /* bílé pozadí pro lepší kontrast s obrázkem */
+    background-color: #1a1a1a;
     color: #BCBCBC;
 }
 
 .card-back img {
-    width: 90%; /* zmenšení obrázku vlajky, aby nezabíral celou plochu */
+    width: 90%;
     height: auto;
-    object-fit: contain; /* ujistění, že obrázek bude celý vidět */
+    object-fit: contain;
 }
 
 .matched {
     cursor: default;
-    opacity: 0.4; /* ztmavení spárovaných karet */
+    opacity: 0.4;
 }
 
 @media (max-width: 600px) {
     .game-board {
-        grid-template-columns: repeat(2, 1fr); /* pouze 2 sloupce pro úsporu místa */
-        gap: 5px; /* menší mezery mezi kartami */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
     }
 
     .card {
-        margin: 5px; /* dodatečný okraj pro lepší manipulaci */
+        margin: 5px;
     }
 }

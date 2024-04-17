@@ -17,14 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
     scoreBoard.textContent = 'Aktuální skóre: ' + currentScore;
     document.body.insertBefore(scoreBoard, gameBoard);
 
-    // Dynamické načítání států a vlajek z JSON souboru
-    fetch('../../json/pexeso/databaze.json') // Upravte cestu k vašemu JSON souboru
+
+    fetch('../../json/pexeso/databaze.json')
         .then(response => response.json())
         .then(data => {
-            const states = data.level2; // Změna na data pro úroveň 2
+            const states = data.level2;
             const cardSet = [...states.map(state => ({ ...state, type: 'name' })), ...states.map(state => ({ ...state, type: 'flag' }))].sort(() => Math.random() - 0.5);
 
-            gameBoard.innerHTML = ''; // Vyčistění herního pole
+            gameBoard.innerHTML = '';
 
             cardSet.forEach((item) => {
                 const card = document.createElement('div');
@@ -91,9 +91,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (document.querySelectorAll('.card:not(.matched)').length === 0) {
                 alert('Gratulace! Dohráli jste hru a odemkli tak úroveň 3! Vaše dosažené skóre: ' + currentScore);
                 if (levelUnlocked === 2) {
-                    localStorage.setItem('levelUnlocked', '3');  // Odemčení úrovně 3
-                    localStorage.setItem('currentScoreLevel3', '0');  // Reset skóre pro úroveň 3
-                    window.location.href = 'Zemepisne-pexeso-uroven3.html';  // Přechod na úroveň 3
+                    localStorage.setItem('levelUnlocked', '3');
+                    localStorage.setItem('currentScoreLevel3', '0');
+                    window.location.href = 'Zemepisne-pexeso-uroven3.html';
                 }
             }
         }, 1000);

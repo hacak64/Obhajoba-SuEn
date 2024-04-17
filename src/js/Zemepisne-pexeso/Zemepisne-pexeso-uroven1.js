@@ -11,15 +11,15 @@ document.addEventListener('DOMContentLoaded', () => {
     scoreBoard.textContent = 'Skóre: ' + currentScore;
     document.body.insertBefore(scoreBoard, gameBoard);
 
-    // Dynamické načítání států a vlajek z JSON souboru
-    fetch('../../json/pexeso/databaze.json')  // Cesta k JSON souboru
+
+    fetch('../../json/pexeso/databaze.json')
     .then(response => response.json())
     .then(data => {
-    const states = data.level1;  // Upravte podle potřebné úrovně
+    const states = data.level1;
     const cardSet = [...states.map(state => ({ ...state, type: 'name' })), ...states.map(state => ({ ...state, type: 'flag' }))].sort(() => 0.5 - Math.random());
 
-    gameBoard.innerHTML = '';  // Vyčistění herního pole
-
+    gameBoard.innerHTML = ''; 
+    
     cardSet.forEach((item) => {
         const card = document.createElement('div');
         card.className = 'card';

@@ -17,14 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
     scoreBoard.textContent = 'Aktuální skóre: ' + currentScore;
     document.body.insertBefore(scoreBoard, gameBoard);
 
-    // Dynamické načítání států a vlajek z JSON souboru
-    fetch('../../json/pexeso/databaze.json') // Upravte cestu k vašemu JSON souboru
+    fetch('../../json/pexeso/databaze.json')
         .then(response => response.json())
         .then(data => {
-            const states = data.level3; // Předpokládá, že data jsou strukturovaná jako { level3: [{name, flag}, ...] }
+            const states = data.level3;
             const cardSet = [...states.map(state => ({ ...state, type: 'name' })), ...states.map(state => ({ ...state, type: 'flag' }))].sort(() => Math.random() - 0.5);
 
-            gameBoard.innerHTML = ''; // Vyčistění herního pole před generováním nových karet
+            gameBoard.innerHTML = '';
 
             cardSet.forEach((item) => {
                 const card = document.createElement('div');
@@ -90,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (document.querySelectorAll('.card:not(.matched)').length === 0) {
                 alert('Gratulace! Vyhráli jste hru! Vaše skóre: ' + currentScore);
-                localStorage.setItem('currentScoreLevel3', '0'); // Reset skóre pro úroveň 3 po výhře
+                localStorage.setItem('currentScoreLevel3', '0');
             }
         }, 1000);
     }

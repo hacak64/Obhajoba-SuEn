@@ -6,7 +6,6 @@ body {
     user-select: none;
   }
 
-
 .hexagon-group{
     top: 0;
     left: 0;
@@ -39,9 +38,9 @@ body {
 
 .zpet {
   height: auto;
-  position: absolute;  /* Absolutní pozicování vůči nejbližšímu relativně pozicovanému předkovi */
-  right: 2%;         /* Odsazení od pravého okraje kontejneru */
-  bottom: 5%;        /* Odsazení od spodního okraje kontejneru */
+  position: absolute;
+  right: 2%;        
+  bottom: 5%;        
   transition: transform 0.3s;
 }
 
