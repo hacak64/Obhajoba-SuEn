@@ -55,7 +55,7 @@ body, html {
     aspect-ratio: 1 / 1; /* zachování poměru stran 1:1 */
     position: relative;
     border-radius: 15%; /* mírně zaoblené rohy */
-    background-image: url('/obrazce/pexeso/Karta.svg');
+    background-image: url('../../../obrazce/pexeso/Karta.svg');
     background-repeat: no-repeat;
     overflow: hidden;
 
