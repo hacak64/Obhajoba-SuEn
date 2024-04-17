@@ -329,14 +329,14 @@
             "penize": 32000,
             "otazky": [
                 {
-                    "otazka": "Jaké má Purkyňka licenční smlouvy?",
+                    "otazka": "Kolik je na Purkyňce oborů?",
                     "moznosti": [
-                        "Nemá",
-                        "Microsoft",
-                        "Apple",
-                        "Picto"
+                        "11",
+                        "8",
+                        "9",
+                        "2"
                     ],
-                    "spravna_odpoved": "Nemá"
+                    "spravna_odpoved": "9"
                 },
                 {
                     "otazka": "Jaká je nejvyšší hora světa?",
