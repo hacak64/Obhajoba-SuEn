@@ -19,13 +19,11 @@
   </div>
 
   <script>
-    // Funkce pro získání hodnoty parametru z URL
     function getQueryParam(param) {
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get(param);
     }
 
-    // Nastavení skóre a peněz z URL do HTML
     document.getElementById('scoreValue').textContent = getQueryParam('score');
     document.getElementById('moneyValue').textContent = getQueryParam('money');
   </script>
